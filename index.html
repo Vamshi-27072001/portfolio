@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vamshi Yadav Golla — AI Systems & Automation Specialist. Building autonomous AI agents that replace manual workflows with 99.98% cost reduction." />
+  <meta name="keywords" content="Vamshi Yadav Golla, AI agent, automation, n8n, LangChain, GPT, data science, machine learning, portfolio" />
+  <meta name="author" content="Vamshi Yadav Golla" />
+  <title>Vamshi Yadav Golla — AI Agent Engineer & Automation Architect</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== LOADER ===== -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">&lt;VYG/&gt;</div>
+      <div class="loader-bar-track"><div class="loader-bar"></div></div>
+    </div>
+  </div>
+
+  <!-- ===== FLOATING ICONS (decorative) ===== -->
+  <div class="floating-icons" aria-hidden="true">
+    <i class="ri-robot-2-line fi fi-1"></i>
+    <i class="ri-brain-line fi fi-2"></i>
+    <i class="ri-code-s-slash-line fi fi-3"></i>
+    <i class="ri-database-2-line fi fi-4"></i>
+    <i class="ri-cloud-line fi fi-5"></i>
+    <i class="ri-mail-ai-line fi fi-6"></i>
+    <i class="ri-bar-chart-grouped-line fi fi-7"></i>
+    <i class="ri-terminal-box-line fi fi-8"></i>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-bracket">&lt;</span>VYG<span class="logo-bracket">/&gt;</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#about"          class="nav-link">About</a>
+        <a href="#skills"         class="nav-link">Skills</a>
+        <a href="#projects"       class="nav-link">Projects</a>
+        <a href="#experience"     class="nav-link">Experience</a>
+        <a href="#certifications" class="nav-link">Certifications</a>
+        <a href="#contact"        class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <i class="ri-moon-line" id="themeIcon"></i>
+        </button>
+        <a href="#contact" class="btn btn-primary btn-sm">
+          <i class="ri-chat-1-line"></i> Let's Talk
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-mesh"></div>
+      <div class="hero-glow"></div>
+    </div>
+
+    <div class="container hero-content">
+      <div class="hero-badge reveal">
+        <span class="badge-dot"></span>
+        Available for AI & Automation Roles — London, UK
+      </div>
+
+      <h1 class="hero-title reveal">
+        I Engineer <span class="gradient-text">AI Agents</span> That<br />
+        Replace Entire <span class="gradient-text">Workflows</span>
+      </h1>
+
+      <p class="hero-subtitle reveal">
+        <strong>Vamshi Yadav Golla</strong> — AI Systems & Automation Architect. I design, build, and deploy
+        autonomous AI agents on n8n and LangChain that handle customer service, content publishing, and email
+        operations end-to-end — cutting costs by <strong>99.98%</strong> and manual effort by <strong>98%</strong>.
+      </p>
+
+      <div class="hero-cta reveal">
+        <a href="#projects" class="btn btn-primary">
+          Explore My AI Agents <i class="ri-arrow-right-line"></i>
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          Hire Me <i class="ri-briefcase-line"></i>
+        </a>
+      </div>
+
+      <!-- Impact Metrics -->
+      <div class="hero-metrics reveal">
+        <div class="metric">
+          <div class="metric-icon"><i class="ri-robot-2-line"></i></div>
+          <div>
+            <span class="metric-value">3</span>
+            <span class="metric-label">Production AI Agents</span>
+          </div>
+        </div>
+        <div class="metric">
+          <div class="metric-icon"><i class="ri-money-pound-circle-line"></i></div>
+          <div>
+            <span class="metric-value">99.98%</span>
+            <span class="metric-label">Cost Reduction Achieved</span>
+          </div>
+        </div>
+        <div class="metric">
+          <div class="metric-icon"><i class="ri-timer-flash-line"></i></div>
+          <div>
+            <span class="metric-value">&lt;60s</span>
+            <span class="metric-label">End-to-End Automation</span>
+          </div>
+        </div>
+        <div class="metric">
+          <div class="metric-icon"><i class="ri-shield-check-line"></i></div>
+          <div>
+            <span class="metric-value">Zero</span>
+            <span class="metric-label">Hallucination Architecture</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual reveal">
+          <div class="about-card-stack">
+            <div class="about-profile-card">
+              <div class="profile-avatar">
+                <i class="ri-user-3-line"></i>
+              </div>
+              <h3>Vamshi Yadav Golla</h3>
+              <span class="profile-title">AI Agent Engineer</span>
+              <div class="profile-badges">
+                <span><i class="ri-graduation-cap-fill"></i> MSc CS — UEL London</span>
+                <span><i class="ri-map-pin-2-fill"></i> London, UK</span>
+              </div>
+              <div class="profile-social">
+                <a href="https://github.com/Vamshi-27072001" target="_blank" rel="noopener" aria-label="GitHub"><i class="ri-github-fill"></i></a>
+                <a href="https://linkedin.com/in/vamshi-yadav869/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+                <a href="mailto:Vamshiyadav2783@gmail.com" aria-label="Email"><i class="ri-mail-fill"></i></a>
+              </div>
+            </div>
+            <div class="floating-stat-card stat-card-1">
+              <i class="ri-sparkling-2-fill"></i>
+              <span>98% Time Saved</span>
+            </div>
+            <div class="floating-stat-card stat-card-2">
+              <i class="ri-shield-star-fill"></i>
+              <span>Zero Hallucinations</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-text reveal">
+          <div class="section-label">About Me</div>
+          <h2 class="section-title">AI Agent Architect<br />Who Ships Production Systems</h2>
+          <p class="about-desc">
+            I specialise in designing autonomous AI agents that completely replace manual business workflows.
+            My systems don't just "assist" — they <strong>handle 100% of the operation</strong>, from reading
+            customer emails to publishing LinkedIn posts, with zero human intervention.
+          </p>
+          <p class="about-desc">
+            Combining <strong>LangChain orchestration</strong>, <strong>n8n workflow automation</strong>, and
+            <strong>GPT-4o/4.1-mini APIs</strong> with strict tool-first architectures, I build agents that are
+            accurate, auditable, and production-ready — backed by PostgreSQL logging, OAuth2 integrations,
+            and custom knowledge bases.
+          </p>
+          <p class="about-desc">
+            Currently pursuing my <strong>MSc in Computer Science at the University of East London</strong>,
+            with a dissertation achieving <strong>99.95% accuracy</strong> in ML-based GPS spoofing detection
+            for autonomous drones.
+          </p>
+
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <i class="ri-checkbox-circle-fill"></i>
+              <span>3 production-grade AI agents deployed</span>
+            </div>
+            <div class="highlight-item">
+              <i class="ri-checkbox-circle-fill"></i>
+              <span>11–24 node n8n workflows with error handling</span>
+            </div>
+            <div class="highlight-item">
+              <i class="ri-checkbox-circle-fill"></i>
+              <span>Full audit trails via PostgreSQL / Supabase logging</span>
+            </div>
+            <div class="highlight-item">
+              <i class="ri-checkbox-circle-fill"></i>
+              <span>Cyber Security Intern @ Lexnis Services</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="skills section" id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Technical Expertise</div>
+        <h2 class="section-title">My Technology Stack</h2>
+        <p class="section-desc">End-to-end capabilities across AI agent design, machine learning, and data engineering.</p>
+      </div>
+
+      <div class="skills-grid reveal">
+        <!-- AI Agents -->
+        <div class="skill-card">
+          <div class="skill-card-icon gradient-purple"><i class="ri-robot-2-line"></i></div>
+          <h3>AI Agent Design</h3>
+          <div class="skill-tags">
+            <span>LangChain</span><span>n8n</span><span>AI Agent Architecture</span>
+            <span>Prompt Engineering</span><span>Tool-First Routing</span><span>MCP</span>
+          </div>
+        </div>
+        <!-- LLM APIs -->
+        <div class="skill-card">
+          <div class="skill-card-icon gradient-blue"><i class="ri-openai-fill"></i></div>
+          <h3>LLM & APIs</h3>
+          <div class="skill-tags">
+            <span>GPT-4o / 4.1-mini</span><span>Claude API</span><span>OpenAI Vision</span>
+            <span>OpenAI Images API</span><span>RESTful APIs</span><span>OAuth2</span>
+          </div>
+        </div>
+        <!-- Integrations -->
+        <div class="skill-card">
+          <div class="skill-card-icon gradient-green"><i class="ri-links-line"></i></div>
+          <h3>Platform Integrations</h3>
+          <div class="skill-tags">
+            <span>Telegram Bot API</span><span>LinkedIn REST API</span><span>Gmail OAuth2</span>
+            <span>Google Sheets API</span><span>Google Docs API</span><span>Supabase</span>
+          </div>
+        </div>
+        <!-- ML -->
+        <div class="skill-card">
+          <div class="skill-card-icon gradient-orange"><i class="ri-brain-line"></i></div>
+          <h3>Machine Learning</h3>
+          <div class="skill-tags">
+            <span>Python</span><span>Scikit-learn</span><span>XGBoost</span>
+            <span>Random Forest</span><span>NLP / TF-IDF</span><span>CNN / RNN</span>
+          </div>
+        </div>
+        <!-- Data -->
+        <div class="skill-card">
+          <div class="skill-card-icon gradient-teal"><i class="ri-database-2-line"></i></div>
+          <h3>Data & Cloud</h3>
+          <div class="skill-tags">
+            <span>PostgreSQL</span><span>SQL</span><span>Power BI</span>
+            <span>Tableau</span><span>AWS</span><span>Google Cloud</span>
+          </div>
+        </div>
+        <!-- Dev Tools -->
+        <div class="skill-card">
+          <div class="skill-card-icon gradient-pink"><i class="ri-terminal-box-line"></i></div>
+          <h3>Development</h3>
+          <div class="skill-tags">
+            <span>Python</span><span>JavaScript</span><span>Flask</span>
+            <span>Git / GitHub</span><span>VS Code</span><span>MATLAB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Portfolio</div>
+        <h2 class="section-title">AI Agent Projects</h2>
+        <p class="section-desc">Production-grade autonomous systems with real measurable impact. Click any project for full details.</p>
+      </div>
+
+      <!-- Filter -->
+      <div class="project-filters reveal">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="agent">AI Agents</button>
+        <button class="filter-btn" data-filter="ml">Machine Learning</button>
+        <button class="filter-btn" data-filter="analytics">Data Analytics</button>
+      </div>
+
+      <!-- ======= PROJECT 1: NSP Email Agent ======= -->
+      <article class="project-showcase reveal" data-category="agent">
+        <div class="project-showcase-header">
+          <div class="project-number">01</div>
+          <div class="project-showcase-meta">
+            <div class="project-badge-row">
+              <span class="project-type-badge agent">AI Agent</span>
+              <span class="project-type-badge">Production</span>
+              <span class="project-date">Apr 2026</span>
+            </div>
+            <h3 class="project-showcase-title">NSP Cases — AI Email Enquiry Handler</h3>
+            <p class="project-showcase-subtitle">Fully autonomous customer service email pipeline for a UK flight case manufacturer</p>
+          </div>
+        </div>
+
+        <div class="project-showcase-body">
+          <div class="project-description">
+            <p>
+              Engineered a <strong>19-node n8n workflow</strong> that reads inbound Gmail customer enquiries, queries a
+              7-tab Google Sheets knowledge base (product specs, materials, sizing guides, case styles), and sends
+              professional HTML email replies — <strong>end-to-end in under 60 seconds with zero manual intervention</strong>.
+            </p>
+            <p>
+              Integrated <strong>GPT-4o Vision</strong> to analyse image/drawing attachments, with <strong>GPT-4.1-mini</strong>
+              as the main AI agent. Every enquiry and AI response is logged to <strong>Supabase PostgreSQL</strong> with full
+              audit trail. The AI persona operates as a Senior Customer Relations Specialist, producing replies
+              indistinguishable from a human expert.
+            </p>
+
+            <div class="project-impact-grid">
+              <div class="impact-card">
+                <div class="impact-icon"><i class="ri-timer-flash-line"></i></div>
+                <span class="impact-value">&lt;60s</span>
+                <span class="impact-label">End-to-End Response</span>
+              </div>
+              <div class="impact-card">
+                <div class="impact-icon"><i class="ri-hand-heart-line"></i></div>
+                <span class="impact-value">Zero</span>
+                <span class="impact-label">Manual Intervention</span>
+              </div>
+              <div class="impact-card">
+                <div class="impact-icon"><i class="ri-node-tree"></i></div>
+                <span class="impact-value">19</span>
+                <span class="impact-label">Workflow Nodes</span>
+              </div>
+              <div class="impact-card">
+                <div class="impact-icon"><i class="ri-database-2-line"></i></div>
+                <span class="impact-value">7</span>
+                <span class="impact-label">Knowledge Base Tabs</span>
+              </div>
+            </div>
+
+            <!-- Architecture -->
+            <div class="architecture-block">
+              <h4><i class="ri-flow-chart"></i> Workflow Architecture</h4>
+              <pre class="architecture-diagram">
+Gmail Trigger (every 1 min, UNREAD)
+  &rarr; Get Full Message with Attachments
+    &rarr; Check for Attachments (IF node)
+      &boxdr; [YES] &rarr; GPT-4o Vision Analysis &rarr; Combine Query
+      &boxdr; [NO]  &rarr; Prepare Text-Only Query
+          &darr;
+    AI Agent (GPT-4.1-mini) + 7 Google Sheets Tools
+          &darr;
+    Format Email Body (Custom JS &rarr; Styled HTML)
+          &darr;
+    Store in PostgreSQL (Supabase Audit Trail)
+          &darr;
+    Mark Read &amp; Label Important &rarr; Send Email Reply</pre>
+            </div>
+          </div>
+
+          <div class="project-sidebar">
+            <div class="tech-stack-box">
+              <h4>Tech Stack</h4>
+              <div class="stack-pills">
+                <span>n8n (19 nodes)</span><span>LangChain Agent</span><span>GPT-4.1-mini</span>
+                <span>GPT-4o Vision</span><span>Gmail OAuth2 API</span><span>Google Sheets API</span>
+                <span>Supabase PostgreSQL</span><span>Custom JavaScript</span>
+              </div>
+            </div>
+            <div class="project-links-box">
+              <h4>Links</h4>
+              <a href="https://github.com/Vamshi27072001/NSP-email-enquiry.git" target="_blank" rel="noopener" class="project-action-link">
+                <i class="ri-github-fill"></i> View Source Code
+              </a>
+              <a href="https://drive.google.com/file/d/1ea4qMhMEdkfsXNCoJzRfRuyFJ_XnhZBt/view?usp=sharing" target="_blank" rel="noopener" class="project-action-link">
+                <i class="ri-play-circle-fill"></i> Watch Demo Video
+              </a>
+            </div>
+            <!-- Video embed placeholder -->
+            <div class="video-placeholder" id="video-nsp">
+              <i class="ri-video-upload-line"></i>
+              <span>Demo Video</span>
+              <p>Upload your walkthrough video</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ======= PROJECT 2: Restaurant AI Agent ======= -->
+      <article class="project-showcase reveal" data-category="agent">
+        <div class="project-showcase-header">
+          <div class="project-number">02</div>
+          <div class="project-showcase-meta">
+            <div class="project-badge-row">
+              <span class="project-type-badge agent">AI Agent</span>
+              <span class="project-type-badge">Production</span>
+              <span class="project-date">Apr 2026</span>
+            </div>
+            <h3 class="project-showcase-title">Restaurant AI Agent — Taco Bell UK</h3>
+            <p class="project-showcase-subtitle">Zero-hallucination AI chatbot replacing 100% of front-of-house customer enquiries</p>
+          </div>
+        </div>
+
+        <div class="project-showcase-body">
+          <div class="project-description">
+            <p>
+              Deployed an <strong>11-node LangChain AI agent</strong> on n8n powered by <strong>GPT-4o-mini</strong> via Telegram
+              that handles menu, allergen, nutrition, and ingredient questions at <strong>sub-2-second response times, 24/7</strong>.
+              The system replaced 100% of routine customer service, cutting operating costs from
+              <strong>an estimated &pound;12,000/year to &pound;36/year</strong> in API fees.
+            </p>
+            <p>
+              Achieved <strong>zero-hallucination accuracy</strong> across 100+ menu items through a strict
+              <strong>tool-first routing system</strong> — the AI queries a live Google Sheets data source before
+              every single response. Full <strong>EU/UK allergen compliance</strong> across 60+ items with YES / MAY CONTAIN / FREE
+              answers and mandatory cross-contamination notices. Persistent per-user memory via PostgreSQL.
+            </p>
+
+            <div class="project-impact-grid">
+              <div class="impact-card">
+                <div class="impact-icon"><i class="ri-money-pound-circle-line"></i></div>
+                <span class="impact-value">99.98%</span>
+                <span class="impact-label">Cost Reduction</span>
+              </div>
+              <div class="impact-card">
+                <div class="impact-icon"><i class="ri-shield-check-line"></i></div>
+                <span class="impact-value">Zero</span>
+                <span class="impact-label">Hallucinations</span>
+              </div>
+              <div class="impact-card">
+                <div class="impact-icon"><i class="ri-restaurant-line"></i></div>
+                <span class="impact-value">100+</span>
+                <span class="impact-label">Menu Items Covered</span>
+              </div>
+              <div class="impact-card">
+                <div class="impact-icon"><i class="ri-error-warning-line"></i></div>
+                <span class="impact-value">14</span>
+                <span class="impact-label">EU/UK Allergens Tracked</span>
+              </div>
+            </div>
+
+            <div class="architecture-block">
+              <h4><i class="ri-flow-chart"></i> Workflow Architecture</h4>
+              <pre class="architecture-diagram">
+Telegram Trigger
+    &darr;
+AI Agent "Shiva" (GPT-4o-mini) + LangChain
+  &boxdr; Postgres Chat Memory (100-msg per user)
+  &boxdr; menu_lookup          &rarr; Google Sheets: UK Menu Items
+  &boxdr; nutrition_lookup     &rarr; Google Sheets: Nutrition (UK)
+  &boxdr; allergen_check       &rarr; Google Sheets: Allergens (UK)
+  &boxdr; ingredients_lookup   &rarr; Google Sheets: Ingredients (UK)
+  &boxdr; summary_lookup       &rarr; Google Sheets: Summary
+  &boxdr; FAQ_lookup           &rarr; Google Docs: Restaurant FAQ
+    &darr;
+Send Reply &rarr; Telegram (same chat)</pre>
+            </div>
+          </div>
+
+          <div class="project-sidebar">
+            <div class="tech-stack-box">
+              <h4>Tech Stack</h4>
+              <div class="stack-pills">
+                <span>n8n (11 nodes)</span><span>LangChain Agent</span><span>GPT-4o-mini</span>
+                <span>Telegram Bot API</span><span>Google Sheets API</span><span>Google Docs API</span>
+                <span>PostgreSQL Memory</span><span>8-Rule System Prompt</span>
+              </div>
+            </div>
+            <div class="project-links-box">
+              <h4>Links</h4>
+              <a href="https://github.com/Vamshi-27072001/restaurant-ai-agent.git" target="_blank" rel="noopener" class="project-action-link">
+                <i class="ri-github-fill"></i> View Source Code
+              </a>
+            </div>
+            <div class="video-placeholder" id="video-restaurant">
+              <i class="ri-video-upload-line"></i>
+              <span>Demo Video</span>
+              <p>Upload your walkthrough video</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ======= PROJECT 3: LinkedIn AI Agent ======= -->
+      <article class="project-showcase reveal" data-category="agent">
+        <div class="project-showcase-header">
+          <div class="project-number">03</div>
+          <div class="project-showcase-meta">
+            <div class="project-badge-row">
+              <span class="project-type-badge agent">AI Agent</span>
+              <span class="project-type-badge">Production</span>
+              <span class="project-date">Apr 2026</span>
+            </div>
+            <h3 class="project-showcase-title">LinkedIn Post Manager — AI Content Engine</h3>
+            <p class="project-showcase-subtitle">Autonomous Telegram-to-LinkedIn publishing pipeline — 98% time reduction</p>
+          </div>
+        </div>
+
+        <div class="project-showcase-body">
+          <div class="project-description">
+            <p>
+              Built an <strong>autonomous Telegram-to-LinkedIn engine</strong> — a 13-node n8n pipeline using
+              <strong>GPT-4.1-mini</strong>, <strong>OpenAI Images API</strong>, and <strong>LinkedIn ugcPosts API</strong>
+              that eliminated all human touchpoints. Cuts content creation time by <strong>98%</strong>
+              (from 25 minutes to 30 seconds) and saves <strong>&pound;24,000/year</strong> in outsourced social media costs
+              at <strong>&pound;0.01 per post</strong>.
+            </p>
+            <p>
+              Automated a <strong>5-API cross-platform media pipeline</strong> with binary MIME-type correction,
+              OpenAI image enhancement, and LinkedIn Assets API upload. Includes <strong>PostgreSQL-backed LangChain memory</strong>
+              (100-message context window) for persistent conversations with 100% context retention.
+              Enforced post structure: hook + 3 paragraphs + CTA + 10 hashtags on every output.
+            </p>
+
+            <div class="project-impact-grid">
+              <div class="impact-card">
+                <div class="impact-icon"><i class="ri-time-line"></i></div>
+                <span class="impact-value">98%</span>
+                <span class="impact-label">Time Reduction</span>
+              </div>
+              <div class="impact-card">
+                <div class="impact-icon"><i class="ri-money-pound-circle-line"></i></div>
+                <span class="impact-value">&pound;24K/yr</span>
+                <span class="impact-label">Cost Savings</span>
+              </div>
+              <div class="impact-card">
+                <div class="impact-icon"><i class="ri-links-line"></i></div>
+                <span class="impact-value">5</span>
+                <span class="impact-label">APIs Orchestrated</span>
+              </div>
+              <div class="impact-card">
+                <div class="impact-icon"><i class="ri-chat-check-line"></i></div>
+                <span class="impact-value">100%</span>
+                <span class="impact-label">Context Retention</span>
+              </div>
+            </div>
+
+            <div class="architecture-block">
+              <h4><i class="ri-flow-chart"></i> Workflow Architecture</h4>
+              <pre class="architecture-diagram">
+Telegram Trigger (Photo + Caption)
+    &darr;
+AI Agent (GPT-4.1-mini) + Postgres Memory
+    &darr;
+Get Telegram File &rarr; Build Image URL
+    &darr;
+Send Preview to Telegram
+    &darr;
+Get LinkedIn User ID &rarr; Register Image Asset
+    &darr;
+Download &rarr; Fix MIME Type &rarr; OpenAI Image Enhance
+    &darr;
+Upload to LinkedIn Assets &rarr; Publish ugcPost</pre>
+            </div>
+          </div>
+
+          <div class="project-sidebar">
+            <div class="tech-stack-box">
+              <h4>Tech Stack</h4>
+              <div class="stack-pills">
+                <span>n8n (13 nodes)</span><span>LangChain</span><span>GPT-4.1-mini</span>
+                <span>OpenAI Images API</span><span>LinkedIn REST API</span><span>Telegram Bot API</span>
+                <span>PostgreSQL Memory</span><span>OAuth2</span>
+              </div>
+            </div>
+            <div class="project-links-box">
+              <h4>Links</h4>
+              <a href="https://github.com/Vamshi-27072001/telegram-linkedin-agent.git" target="_blank" rel="noopener" class="project-action-link">
+                <i class="ri-github-fill"></i> View Source Code
+              </a>
+            </div>
+            <div class="video-placeholder" id="video-linkedin">
+              <i class="ri-video-upload-line"></i>
+              <span>Demo Video</span>
+              <p>Upload your walkthrough video</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ======= PROJECT 4: GPS Spoofing ML ======= -->
+      <article class="project-showcase project-compact reveal" data-category="ml">
+        <div class="project-showcase-header">
+          <div class="project-number">04</div>
+          <div class="project-showcase-meta">
+            <div class="project-badge-row">
+              <span class="project-type-badge ml">Machine Learning</span>
+              <span class="project-type-badge">MSc Dissertation</span>
+              <span class="project-date">2025</span>
+            </div>
+            <h3 class="project-showcase-title">GPS Spoofing Detection for Drone Delivery Systems</h3>
+            <p class="project-showcase-subtitle">99.95% accuracy Random Forest classifier deployed on Raspberry Pi with automated countermeasures</p>
+          </div>
+        </div>
+        <div class="project-compact-body">
+          <div class="project-impact-grid compact">
+            <div class="impact-card"><span class="impact-value">99.95%</span><span class="impact-label">RF Accuracy</span></div>
+            <div class="impact-card"><span class="impact-value">62K+</span><span class="impact-label">Telemetry Records</span></div>
+            <div class="impact-card"><span class="impact-value">&lt;0.05%</span><span class="impact-label">False Positive Rate</span></div>
+          </div>
+          <div class="stack-pills compact-pills">
+            <span>Python</span><span>Random Forest</span><span>XGBoost</span>
+            <span>Scikit-learn</span><span>Raspberry Pi</span><span>Feature Engineering</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ======= PROJECT 5: NLP ======= -->
+      <article class="project-showcase project-compact reveal" data-category="ml">
+        <div class="project-showcase-header">
+          <div class="project-number">05</div>
+          <div class="project-showcase-meta">
+            <div class="project-badge-row">
+              <span class="project-type-badge ml">NLP</span>
+              <span class="project-type-badge">Kaggle Competition</span>
+              <span class="project-date">2026</span>
+            </div>
+            <h3 class="project-showcase-title">Disaster Tweet Classification — NLP Pipeline</h3>
+            <p class="project-showcase-subtitle">87% accuracy with +15% baseline improvement on 7,000+ tweets</p>
+          </div>
+        </div>
+        <div class="project-compact-body">
+          <div class="project-impact-grid compact">
+            <div class="impact-card"><span class="impact-value">87%</span><span class="impact-label">Accuracy</span></div>
+            <div class="impact-card"><span class="impact-value">+15%</span><span class="impact-label">vs Baseline</span></div>
+            <div class="impact-card"><span class="impact-value">7K+</span><span class="impact-label">Tweets Processed</span></div>
+          </div>
+          <div class="stack-pills compact-pills">
+            <span>Python</span><span>TF-IDF</span><span>Logistic Regression</span>
+            <span>NLTK</span><span>Scikit-learn</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ======= PROJECT 6: Zomato ======= -->
+      <article class="project-showcase project-compact reveal" data-category="analytics">
+        <div class="project-showcase-header">
+          <div class="project-number">06</div>
+          <div class="project-showcase-meta">
+            <div class="project-badge-row">
+              <span class="project-type-badge analytics">Data Analytics</span>
+              <span class="project-date">2025</span>
+            </div>
+            <h3 class="project-showcase-title">Zomato Dataset Analysis &amp; Consumer Insights</h3>
+            <p class="project-showcase-subtitle">Full EDA and sentiment analysis revealing delivery adoption and dining preference patterns</p>
+          </div>
+        </div>
+        <div class="project-compact-body">
+          <div class="project-impact-grid compact">
+            <div class="impact-card"><span class="impact-value">65%</span><span class="impact-label">Delivery Adoption</span></div>
+            <div class="impact-card"><span class="impact-value">+15%</span><span class="impact-label">Ratings Uplift</span></div>
+            <div class="impact-card"><span class="impact-value">55%</span><span class="impact-label">Mid-Range Preference</span></div>
+          </div>
+          <div class="stack-pills compact-pills">
+            <span>Python</span><span>Pandas</span><span>Matplotlib</span>
+            <span>Seaborn</span><span>Sentiment Analysis</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE & EDUCATION ===== -->
+  <section class="experience section" id="experience">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Background</div>
+        <h2 class="section-title">Experience &amp; Education</h2>
+      </div>
+
+      <div class="exp-edu-grid">
+        <div>
+          <h3 class="col-title reveal"><i class="ri-briefcase-line"></i> Professional Experience</h3>
+          <div class="timeline">
+            <div class="timeline-item reveal">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card">
+                <div class="timeline-header">
+                  <div>
+                    <h3 class="timeline-role">Cyber Security Intern</h3>
+                    <span class="timeline-company"><i class="ri-building-line"></i> Lexnis Services Limited — Hertfordshire, UK</span>
+                  </div>
+                  <span class="timeline-period">Nov 2025 – Present</span>
+                </div>
+                <ul class="timeline-achievements">
+                  <li>Conducted market analysis of 10 UK vehicle tracking companies across 5 benchmarking criteria</li>
+                  <li>Mapped 15+ product features per provider, recommending best-fit GPS tracking solutions</li>
+                  <li>Identified a gap in the UK security market supporting a &pound;9,100/month operational model</li>
+                  <li>Utilised AI and Google tools producing reports that informed 3 major business decisions</li>
+                </ul>
+                <div class="timeline-tags">
+                  <span>Market Analysis</span><span>AI Research</span><span>Cybersecurity</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="col-title reveal"><i class="ri-graduation-cap-line"></i> Education</h3>
+          <div class="timeline">
+            <div class="timeline-item reveal">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card">
+                <div class="timeline-header">
+                  <div>
+                    <h3 class="timeline-role">MSc in Computer Science</h3>
+                    <span class="timeline-company"><i class="ri-building-line"></i> University of East London, UK</span>
+                  </div>
+                  <span class="timeline-period">Oct 2024 – May 2026</span>
+                </div>
+                <p class="timeline-desc">Coursework: Software Engineering, Big Data Analytics, AI &amp; Machine Vision, Cloud Computing</p>
+                <ul class="timeline-achievements">
+                  <li>Dissertation: 99.95% accuracy ML-based GPS spoofing detection for drones</li>
+                </ul>
+              </div>
+            </div>
+            <div class="timeline-item reveal">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card">
+                <div class="timeline-header">
+                  <div>
+                    <h3 class="timeline-role">B.Com in Computer Applications</h3>
+                    <span class="timeline-company"><i class="ri-building-line"></i> Anish College of Commerce</span>
+                  </div>
+                  <span class="timeline-period">Jun 2020 – Jun 2023</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CERTIFICATIONS ===== -->
+  <section class="certifications section" id="certifications">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Credentials</div>
+        <h2 class="section-title">Certifications</h2>
+      </div>
+      <div class="certs-grid reveal">
+        <div class="cert-card"><div class="cert-icon"><i class="ri-award-line"></i></div><div class="cert-body"><h4>Data Science Using Python</h4><span class="cert-issuer">IBM &amp; 360DigiTMG</span></div></div>
+        <div class="cert-card"><div class="cert-icon"><i class="ri-file-chart-line"></i></div><div class="cert-body"><h4>Data Analytics Using Excel</h4><span class="cert-issuer">360DigiTMG</span></div></div>
+        <div class="cert-card"><div class="cert-icon"><i class="ri-cloud-line"></i></div><div class="cert-body"><h4>AWS Academy Cloud Foundations</h4><span class="cert-issuer">Amazon Web Services</span></div></div>
+        <div class="cert-card"><div class="cert-icon"><i class="ri-brain-line"></i></div><div class="cert-body"><h4>ML, Deep Learning &amp; Image Processing</h4><span class="cert-issuer">MATLAB Onramps</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="section-label">Get In Touch</div>
+          <h2 class="section-title">Let's Build<br />Something Intelligent</h2>
+          <p class="contact-desc">
+            Looking for an AI agent engineer who ships real systems, not demos? I'm available for
+            full-time roles, internships, and freelance projects in AI automation and data science.
+          </p>
+          <div class="contact-items">
+            <a href="mailto:Vamshiyadav2783@gmail.com" class="contact-item">
+              <div class="contact-item-icon"><i class="ri-mail-line"></i></div>
+              <div><span class="contact-item-label">Email</span><span class="contact-item-value">Vamshiyadav2783@gmail.com</span></div>
+            </a>
+            <a href="tel:+447887132409" class="contact-item">
+              <div class="contact-item-icon"><i class="ri-phone-line"></i></div>
+              <div><span class="contact-item-label">Phone</span><span class="contact-item-value">+44 7887 132 409</span></div>
+            </a>
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="ri-map-pin-line"></i></div>
+              <div><span class="contact-item-label">Location</span><span class="contact-item-value">London, United Kingdom</span></div>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="https://github.com/Vamshi-27072001" class="social-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="ri-github-fill"></i></a>
+            <a href="https://linkedin.com/in/vamshi-yadav869/" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required />
+              <span class="form-error" id="nameError"></span>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="jane@company.com" required />
+              <span class="form-error" id="emailError"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="AI Automation Role / Freelance Project" required />
+            <span class="form-error" id="subjectError"></span>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about the opportunity..." required></textarea>
+            <span class="form-error" id="messageError"></span>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            <span class="btn-text">Send Message <i class="ri-send-plane-2-line"></i></span>
+            <span class="btn-loading" hidden><i class="ri-loader-4-line spin"></i> Sending...</span>
+          </button>
+          <div class="form-success" id="formSuccess" hidden>
+            <i class="ri-checkbox-circle-line"></i> Message sent! I'll respond within 24 hours.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <a href="#hero" class="nav-logo footer-logo"><span class="logo-bracket">&lt;</span>VYG<span class="logo-bracket">/&gt;</span></a>
+        <p class="footer-tagline">Designing AI agents that replace entire workflows.</p>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Vamshi Yadav Golla</span>
+        <div class="footer-links">
+          <a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="ri-arrow-up-line"></i></button>
+
+  <script src="script.js"></script>
+</body>
+</html>
