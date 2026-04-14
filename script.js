@@ -164,6 +164,23 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
+/* ---- HIRE-ME FLOATING WIDGET ---- */
+const hireWidget = document.getElementById('hireWidget');
+const hireToggle = document.getElementById('hireWidgetToggle');
+if (hireWidget && hireToggle) {
+  hireToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = hireWidget.classList.toggle('open');
+    hireToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+  document.addEventListener('click', (e) => {
+    if (!hireWidget.contains(e.target)) {
+      hireWidget.classList.remove('open');
+      hireToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
 /* ---- SUBTLE CARD HOVER ---- */
 document.querySelectorAll('.skill-card, .cert-card, .metric').forEach(card => {
   card.addEventListener('mousemove', e => {
