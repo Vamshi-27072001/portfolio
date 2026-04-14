@@ -315,17 +315,12 @@
 
         <div class="project-showcase-body">
           <div class="project-description">
-            <p>
-              Engineered a <strong>19-node n8n workflow</strong> that reads inbound Gmail customer enquiries, queries a
-              7-tab Google Sheets knowledge base (product specs, materials, sizing guides, case styles), and sends
-              professional HTML email replies — <strong>end-to-end in under 60 seconds with zero manual intervention</strong>.
-            </p>
-            <p>
-              Integrated <strong>GPT-4o Vision</strong> to analyse image/drawing attachments, with <strong>GPT-4.1-mini</strong>
-              as the main AI agent. Every enquiry and AI response is logged to <strong>Supabase PostgreSQL</strong> with full
-              audit trail. The AI persona operates as a Senior Customer Relations Specialist, producing replies
-              indistinguishable from a human expert.
-            </p>
+            <ul class="project-bullets">
+              <li><strong>Engineered a 19-node n8n workflow that replaces a human customer-service agent</strong> — reads inbound Gmail enquiries, queries a 7-tab Google Sheets knowledge base, and sends professional HTML replies <strong>end-to-end in under 60 seconds with zero human intervention</strong>.</li>
+              <li><strong>Integrated GPT-4o Vision for multimodal enquiry handling</strong> — auto-analyses product drawings and image attachments so customers can send a sketch instead of describing dimensions, removing the #1 friction point in technical sales enquiries.</li>
+              <li><strong>Built a persona-driven AI agent (GPT-4.1-mini) acting as a Senior Customer Relations Specialist</strong> — produces replies indistinguishable from a human expert, covering product specs, materials, sizing, and custom case styles.</li>
+              <li><strong>Instrumented a Supabase PostgreSQL audit trail</strong> capturing every inbound enquiry and AI response — full regulatory traceability plus a continuous training-data stream for model refinement.</li>
+            </ul>
 
             <div class="project-impact-grid">
               <div class="impact-card">
@@ -415,18 +410,13 @@ Gmail Trigger (every 1 min, UNREAD)
 
         <div class="project-showcase-body">
           <div class="project-description">
-            <p>
-              Deployed an <strong>11-node LangChain AI agent</strong> on n8n powered by <strong>GPT-4o-mini</strong> via Telegram
-              that handles menu, allergen, nutrition, and ingredient questions at <strong>sub-2-second response times, 24/7</strong>.
-              The system replaced 100% of routine customer service, cutting operating costs from
-              <strong>an estimated &pound;12,000/year to &pound;36/year</strong> in API fees.
-            </p>
-            <p>
-              Achieved <strong>zero-hallucination accuracy</strong> across 100+ menu items through a strict
-              <strong>tool-first routing system</strong> — the AI queries a live Google Sheets data source before
-              every single response. Full <strong>EU/UK allergen compliance</strong> across 60+ items with YES / MAY CONTAIN / FREE
-              answers and mandatory cross-contamination notices. Persistent per-user memory via PostgreSQL.
-            </p>
+            <ul class="project-bullets">
+              <li><strong>Deployed an 11-node LangChain AI agent on Telegram (GPT-4o-mini)</strong> that handles menu, allergen, nutrition, and ingredient questions <strong>24/7 at sub-2-second latency</strong> — replacing 100% of routine front-of-house customer service.</li>
+              <li><strong>Drove operating costs from an estimated &pound;12,000/year to &pound;36/year</strong> — a <strong>99.98% reduction</strong> — while lifting coverage from business hours to always-on, directly hitting the economics a hiring manager cares about.</li>
+              <li><strong>Engineered a strict tool-first routing architecture for zero-hallucination accuracy</strong> across 100+ menu items — the AI must query live Google Sheets data before every response, making factual drift structurally impossible.</li>
+              <li><strong>Implemented full EU/UK allergen compliance across 60+ items</strong> with YES / MAY CONTAIN / FREE answers and mandatory cross-contamination notices — regulatory-grade safety built into the agent's core prompt.</li>
+              <li><strong>Added persistent per-user memory via PostgreSQL</strong> (100-message context window) — customers get continuity across sessions, not stateless one-shot replies.</li>
+            </ul>
 
             <div class="project-impact-grid">
               <div class="impact-card">
@@ -510,19 +500,13 @@ Send Reply &rarr; Telegram (same chat)</pre>
 
         <div class="project-showcase-body">
           <div class="project-description">
-            <p>
-              Built an <strong>autonomous Telegram-to-LinkedIn engine</strong> — a 13-node n8n pipeline using
-              <strong>GPT-4.1-mini</strong>, <strong>OpenAI Images API</strong>, and <strong>LinkedIn ugcPosts API</strong>
-              that eliminated all human touchpoints. Cuts content creation time by <strong>98%</strong>
-              (from 25 minutes to 30 seconds) and saves <strong>&pound;24,000/year</strong> in outsourced social media costs
-              at <strong>&pound;0.01 per post</strong>.
-            </p>
-            <p>
-              Automated a <strong>5-API cross-platform media pipeline</strong> with binary MIME-type correction,
-              OpenAI image enhancement, and LinkedIn Assets API upload. Includes <strong>PostgreSQL-backed LangChain memory</strong>
-              (100-message context window) for persistent conversations with 100% context retention.
-              Enforced post structure: hook + 3 paragraphs + CTA + 10 hashtags on every output.
-            </p>
+            <ul class="project-bullets">
+              <li><strong>Built a fully autonomous Telegram-to-LinkedIn publishing engine</strong> — a 13-node n8n pipeline (GPT-4.1-mini + OpenAI Images API + LinkedIn ugcPosts API) that eliminates every human touchpoint in the content workflow.</li>
+              <li><strong>Cut content creation time by 98%</strong> (from 25 minutes to 30 seconds) and saved <strong>&pound;24,000/year in outsourced social media costs</strong> at just <strong>&pound;0.01 per post</strong> — a direct line from engineering work to P&amp;L impact.</li>
+              <li><strong>Orchestrated a 5-API cross-platform media pipeline</strong> with binary MIME-type correction, OpenAI image enhancement, and LinkedIn Assets API upload — solved the hardest part of LinkedIn automation most devs get stuck on.</li>
+              <li><strong>Engineered PostgreSQL-backed LangChain memory</strong> (100-message context window) delivering <strong>100% context retention</strong> across conversations — no state loss between publishing sessions.</li>
+              <li><strong>Enforced production content structure on every output</strong> — hook + 3 paragraphs + CTA + 10 hashtags — codifying a proven engagement format so AI output meets brand-team standards without review.</li>
+            </ul>
 
             <div class="project-impact-grid">
               <div class="impact-card">
