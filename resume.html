@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vamshi Yadav Golla — AI Agent Engineer & Automation Architect. Resume." />
+  <title>Vamshi Yadav Golla — Resume | AI Agent Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <style>
+    :root{
+      --ink:#0f172a;
+      --ink-2:#334155;
+      --muted:#64748b;
+      --accent:#6366f1;
+      --accent-2:#8b5cf6;
+      --rule:#e2e8f0;
+      --bg:#f8fafc;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+
+    /* ---- Print-action bar (hidden when printing) ---- */
+    .toolbar{position:sticky;top:0;z-index:50;background:rgba(248,250,252,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+    .toolbar-inner{max-width:860px;margin:0 auto;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    .toolbar-hint{font-size:.78rem;color:var(--muted)}
+    .toolbar-actions{display:flex;gap:8px}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:99px;font-size:.82rem;font-weight:600;text-decoration:none;border:1px solid var(--rule);background:#fff;color:var(--ink);cursor:pointer;transition:all .2s}
+    .btn:hover{border-color:var(--accent);color:var(--accent)}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border-color:transparent;box-shadow:0 6px 18px rgba(99,102,241,.25)}
+    .btn.primary:hover{color:#fff;transform:translateY(-1px);box-shadow:0 10px 24px rgba(99,102,241,.35)}
+
+    /* ---- Page ---- */
+    .sheet{max-width:860px;margin:20px auto 40px;background:#fff;padding:42px 54px;box-shadow:0 4px 24px rgba(15,23,42,.06);border-radius:6px}
+
+    /* ---- Header ---- */
+    .head{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;padding-bottom:18px;border-bottom:2px solid var(--ink)}
+    .head-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.1rem;line-height:1.1;color:var(--ink);letter-spacing:-.01em}
+    .head-title{font-size:.95rem;color:var(--accent);font-weight:600;margin-top:4px;letter-spacing:.01em}
+    .head-contact{display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--ink-2);text-align:right}
+    .head-contact a{color:var(--ink-2);text-decoration:none}
+    .head-contact a:hover{color:var(--accent)}
+    .head-contact i{color:var(--accent);margin-right:4px}
+
+    /* ---- Section ---- */
+    section.block{margin-top:18px}
+    h2.section{font-family:'Space Grotesk',sans-serif;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:8px}
+    h2.section i{font-size:1rem}
+
+    /* ---- Summary ---- */
+    .summary{font-size:.88rem;color:var(--ink-2);line-height:1.6}
+    .summary strong{color:var(--ink);font-weight:600}
+
+    /* ---- Experience / Project entry ---- */
+    .entry{margin-bottom:14px}
+    .entry:last-child{margin-bottom:0}
+    .entry-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:3px}
+    .entry-role{font-size:.95rem;font-weight:700;color:var(--ink)}
+    .entry-org{font-size:.82rem;color:var(--ink-2);font-weight:500}
+    .entry-org em{font-style:normal;color:var(--muted)}
+    .entry-date{font-size:.76rem;color:var(--muted);font-weight:500;white-space:nowrap;font-variant-numeric:tabular-nums}
+    .entry-sub{font-size:.78rem;color:var(--muted);margin-bottom:6px;font-style:italic}
+    ul.bullets{list-style:none;padding:0;margin-top:5px}
+    ul.bullets li{position:relative;padding-left:14px;font-size:.82rem;color:var(--ink-2);line-height:1.55;margin-bottom:3px}
+    ul.bullets li::before{content:"▸";position:absolute;left:0;top:0;color:var(--accent);font-size:.78rem}
+    ul.bullets li strong{color:var(--ink);font-weight:600}
+    .tech-line{font-size:.74rem;color:var(--muted);margin-top:4px}
+    .tech-line strong{color:var(--ink-2);font-weight:600;letter-spacing:.02em}
+
+    /* ---- Two-col grid ---- */
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+
+    /* ---- Skills ---- */
+    .skill-group{margin-bottom:8px;font-size:.82rem;line-height:1.55}
+    .skill-label{color:var(--ink);font-weight:700;display:inline}
+    .skill-val{color:var(--ink-2);display:inline}
+
+    /* ---- Certifications ---- */
+    .cert-list{display:grid;grid-template-columns:1fr 1fr;gap:5px 16px;font-size:.8rem;color:var(--ink-2)}
+    .cert-list span{padding-left:12px;position:relative}
+    .cert-list span::before{content:"◆";position:absolute;left:0;top:0;color:var(--accent);font-size:.6rem;line-height:1.5}
+
+    /* ---- Links (project) ---- */
+    a.proj-link{color:var(--accent);text-decoration:none;font-size:.74rem;font-weight:600}
+    a.proj-link:hover{text-decoration:underline}
+
+    /* ---- PRINT ---- */
+    @media print{
+      @page{size:A4;margin:14mm 14mm 12mm}
+      body{background:#fff}
+      .toolbar{display:none}
+      .sheet{margin:0;padding:0;max-width:none;box-shadow:none;border-radius:0}
+      .entry{page-break-inside:avoid}
+      a{color:var(--ink) !important;text-decoration:none !important}
+      a.proj-link{color:var(--accent) !important}
+      .head-contact a{color:var(--ink-2) !important}
+    }
+
+    @media(max-width:640px){
+      .sheet{padding:28px 22px}
+      .head{grid-template-columns:1fr}
+      .head-contact{text-align:left}
+      .two-col{grid-template-columns:1fr}
+      .head-name{font-size:1.7rem}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toolbar (hidden in print) -->
+  <div class="toolbar">
+    <div class="toolbar-inner">
+      <span class="toolbar-hint">
+        <i class="ri-information-line"></i>
+        Press <strong>Ctrl / ⌘ + P</strong> → "Save as PDF" to download the printable version
+      </span>
+      <div class="toolbar-actions">
+        <a href="index.html" class="btn"><i class="ri-arrow-left-line"></i> Back to Portfolio</a>
+        <button class="btn primary" onclick="window.print()"><i class="ri-printer-line"></i> Save / Print PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="sheet">
+
+    <!-- ============ HEADER ============ -->
+    <header class="head">
+      <div>
+        <h1 class="head-name">Vamshi Yadav Golla</h1>
+        <div class="head-title">AI Agent Engineer &amp; Automation Architect</div>
+      </div>
+      <div class="head-contact">
+        <span><i class="ri-map-pin-line"></i> London, United Kingdom</span>
+        <a href="mailto:Vamshiyadav2783@gmail.com"><i class="ri-mail-line"></i> Vamshiyadav2783@gmail.com</a>
+        <a href="tel:+447887132409"><i class="ri-phone-line"></i> +44 7887 132 409</a>
+        <a href="https://linkedin.com/in/vamshi-yadav869/" target="_blank" rel="noopener"><i class="ri-linkedin-fill"></i> linkedin.com/in/vamshi-yadav869</a>
+        <a href="https://github.com/Vamshi-27072001" target="_blank" rel="noopener"><i class="ri-github-fill"></i> github.com/Vamshi-27072001</a>
+        <a href="https://vamshi-27072001.github.io/portfolio/" target="_blank" rel="noopener"><i class="ri-global-line"></i> vamshi-27072001.github.io/portfolio</a>
+      </div>
+    </header>
+
+    <!-- ============ SUMMARY ============ -->
+    <section class="block">
+      <h2 class="section"><i class="ri-user-star-line"></i> Professional Summary</h2>
+      <p class="summary">
+        <strong>AI Agent Engineer</strong> specialising in autonomous AI systems built on <strong>n8n, LangChain, and GPT-4o</strong>. Shipped <strong>6 production projects</strong> delivering <strong>£36K+/year in business impact</strong>, including a 99.98% cost-reduction chatbot, a zero-touch LinkedIn publishing pipeline, and an ML GPS-spoofing detector with <strong>99.95% accuracy</strong>. MSc Computer Science (UEL). Actively interviewing for UK-based AI Engineer, Automation Engineer, and ML Engineer roles — Graduate Visa eligible.
+      </p>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="block">
+      <h2 class="section"><i class="ri-briefcase-line"></i> Professional Experience</h2>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <span class="entry-role">Cyber Security Intern</span>
+            <div class="entry-org">Lexnis Services Limited — <em>Hertfordshire, UK</em></div>
+          </div>
+          <span class="entry-date">Nov 2025 – Present</span>
+        </div>
+        <ul class="bullets">
+          <li><strong>Conducted market analysis of 10 UK vehicle tracking companies</strong> across 5 benchmarking criteria, producing a decision-ready competitive matrix for leadership.</li>
+          <li><strong>Mapped 15+ product features per provider</strong> and recommended best-fit GPS tracking solutions aligned to target customer segments.</li>
+          <li><strong>Identified a market gap supporting a £9,100/month operational model</strong> — insight directly fed into the company's go-to-market strategy.</li>
+          <li><strong>Leveraged AI tools (GPT-4, Google suite) to produce research reports</strong> that informed 3 major business decisions, accelerating analysis throughput 4×.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="block">
+      <h2 class="section"><i class="ri-rocket-2-line"></i> Flagship Projects</h2>
+
+      <!-- PROJECT 1 -->
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <span class="entry-role">NSP Cases — AI Email Enquiry Handler</span>
+            <div class="entry-org">Autonomous customer-service pipeline · <em>Production</em></div>
+          </div>
+          <span class="entry-date">Apr 2026</span>
+        </div>
+        <ul class="bullets">
+          <li><strong>Engineered a 19-node n8n workflow that replaces a human customer-service agent</strong> — reads Gmail enquiries, queries a 7-tab knowledge base, sends HTML replies end-to-end in <strong>under 60 seconds, zero human intervention</strong>.</li>
+          <li><strong>Integrated GPT-4o Vision for multimodal enquiry handling</strong> — auto-analyses product drawings/images, removing the #1 friction point in technical sales enquiries.</li>
+          <li><strong>Built persona-driven AI agent (GPT-4.1-mini)</strong> producing replies indistinguishable from a human expert; full Supabase PostgreSQL audit trail for regulatory traceability.</li>
+        </ul>
+        <div class="tech-line"><strong>Stack:</strong> n8n · LangChain · GPT-4.1-mini · GPT-4o Vision · Gmail OAuth2 · Google Sheets API · Supabase PostgreSQL &nbsp;|&nbsp; <a class="proj-link" href="https://github.com/Vamshi27072001/NSP-email-enquiry" target="_blank" rel="noopener">github.com/Vamshi27072001/NSP-email-enquiry</a></div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <span class="entry-role">Restaurant AI Agent — Taco Bell UK</span>
+            <div class="entry-org">Zero-hallucination AI chatbot · <em>Production</em></div>
+          </div>
+          <span class="entry-date">Apr 2026</span>
+        </div>
+        <ul class="bullets">
+          <li><strong>Deployed an 11-node LangChain AI agent on Telegram (GPT-4o-mini)</strong> handling menu, allergen, nutrition, and ingredient questions <strong>24/7 at sub-2-second latency</strong>.</li>
+          <li><strong>Drove operating costs from £12,000/year → £36/year (99.98% reduction)</strong> while lifting coverage from business hours to always-on.</li>
+          <li><strong>Engineered strict tool-first routing for zero-hallucination accuracy</strong> across 100+ menu items; full EU/UK allergen compliance with mandatory cross-contamination notices.</li>
+          <li><strong>Added persistent per-user memory via PostgreSQL</strong> (100-message context window) for stateful conversations across sessions.</li>
+        </ul>
+        <div class="tech-line"><strong>Stack:</strong> n8n · LangChain · GPT-4o-mini · Telegram Bot API · Google Sheets/Docs · PostgreSQL &nbsp;|&nbsp; <a class="proj-link" href="https://github.com/Vamshi-27072001/restaurant-ai-agent" target="_blank" rel="noopener">github.com/Vamshi-27072001/restaurant-ai-agent</a></div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <span class="entry-role">LinkedIn Post Manager — AI Content Engine</span>
+            <div class="entry-org">Autonomous Telegram-to-LinkedIn publishing · <em>Production</em></div>
+          </div>
+          <span class="entry-date">Apr 2026</span>
+        </div>
+        <ul class="bullets">
+          <li><strong>Built a fully autonomous Telegram-to-LinkedIn publishing engine</strong> (13-node n8n + GPT-4.1-mini + OpenAI Images API + LinkedIn ugcPosts API) eliminating every human touchpoint.</li>
+          <li><strong>Cut content creation time by 98% (25 min → 30 sec)</strong> and saved <strong>£24,000/year in outsourced social media costs</strong> at just £0.01 per post.</li>
+          <li><strong>Orchestrated a 5-API cross-platform media pipeline</strong> with binary MIME-type correction, OpenAI image enhancement, and LinkedIn Assets API upload.</li>
+          <li><strong>PostgreSQL-backed LangChain memory (100-message window)</strong> delivering 100% context retention; enforced production post structure (hook + 3 paragraphs + CTA + 10 hashtags) on every output.</li>
+        </ul>
+        <div class="tech-line"><strong>Stack:</strong> n8n · LangChain · GPT-4.1-mini · OpenAI Images API · LinkedIn REST API · Telegram · PostgreSQL · OAuth2 &nbsp;|&nbsp; <a class="proj-link" href="https://github.com/Vamshi-27072001/telegram-linkedin-agent" target="_blank" rel="noopener">github.com/Vamshi-27072001/telegram-linkedin-agent</a></div>
+      </div>
+
+      <!-- PROJECT 4 -->
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <span class="entry-role">ML-Based GPS Spoofing Detection for Drone Delivery Systems</span>
+            <div class="entry-org">MSc Dissertation · <em>University of Hertfordshire</em></div>
+          </div>
+          <span class="entry-date">Jun 2025 – Sep 2025</span>
+        </div>
+        <ul class="bullets">
+          <li><strong>Architected a production-grade ML security system for autonomous drones</strong> — end-to-end pipeline from raw telemetry ingestion to live edge inference on Raspberry Pi.</li>
+          <li><strong>Engineered predictive features from 62,000+ live telemetry records</strong>; isolated top 4 attack signals (GPS HDOP, yaw rate, throttle %, roll) via correlation and feature-importance analysis.</li>
+          <li><strong>Trained Random Forest &amp; XGBoost classifiers to 99.95% / 99.90% accuracy</strong> with false-positive rate &lt;0.05% — exceeding aviation safety thresholds.</li>
+          <li><strong>Deployed real-time detection pipeline</strong> with autonomous countermeasures (hover, reroute, return-to-base); validated against simulated spoofing attacks.</li>
+        </ul>
+        <div class="tech-line"><strong>Stack:</strong> Python · Scikit-learn · XGBoost · Random Forest · Pandas · NumPy · Raspberry Pi · Matplotlib/Seaborn</div>
+      </div>
+
+      <!-- PROJECT 5 -->
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <span class="entry-role">Disaster Tweet Classification — NLP</span>
+            <div class="entry-org">Kaggle competition</div>
+          </div>
+          <span class="entry-date">2025</span>
+        </div>
+        <ul class="bullets">
+          <li><strong>Built a production-ready NLP classifier for real-time disaster detection</strong> — 87% accuracy (+15% over baseline) on 7,000+ tweets.</li>
+          <li><strong>Engineered a 6-stage text-preprocessing pipeline</strong> (tokenization, stopword removal, stemming, lemmatization, regex cleaning, TF-IDF), materially lifting precision/recall.</li>
+          <li><strong>Recovered 90% of missing geolocation data</strong> via custom imputation heuristics, unlocking geospatial analysis for emergency-response use cases.</li>
+        </ul>
+        <div class="tech-line"><strong>Stack:</strong> Python · TF-IDF · Logistic Regression · NLTK · Scikit-learn · Regex · Pandas · Geospatial Analysis</div>
+      </div>
+
+      <!-- PROJECT 6 -->
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <span class="entry-role">Zomato Dataset Analysis &amp; Consumer Insights</span>
+            <div class="entry-org">EDA &amp; sentiment analysis</div>
+          </div>
+          <span class="entry-date">Feb 2025</span>
+        </div>
+        <ul class="bullets">
+          <li><strong>Quantified a 65% online delivery adoption rate</strong> and proved digital presence correlates with a 10–15% uplift in customer ratings.</li>
+          <li><strong>Segmented dining behaviour across customer cohorts</strong> — surfaced that 55% of couples favour mid-range venues ($6–$18), a monetisable targeting signal.</li>
+          <li><strong>Ran sentiment analysis across thousands of reviews</strong>, identifying top 3 operational rating drivers (service speed, order accuracy, menu variety).</li>
+        </ul>
+        <div class="tech-line"><strong>Stack:</strong> Python · Pandas · Matplotlib · Seaborn · Sentiment Analysis · EDA</div>
+      </div>
+    </section>
+
+    <!-- ============ TWO COLUMN: SKILLS + EDUCATION ============ -->
+    <div class="two-col">
+
+      <!-- SKILLS -->
+      <section class="block">
+        <h2 class="section"><i class="ri-tools-line"></i> Technical Skills</h2>
+        <div class="skill-group"><span class="skill-label">AI Agents:</span> <span class="skill-val">LangChain · n8n · AI Agent Architecture · Prompt Engineering · Tool-First Routing · MCP</span></div>
+        <div class="skill-group"><span class="skill-label">LLMs &amp; APIs:</span> <span class="skill-val">GPT-4o · GPT-4.1-mini · Claude API · OpenAI Vision · OpenAI Images API · RESTful APIs · OAuth2</span></div>
+        <div class="skill-group"><span class="skill-label">Integrations:</span> <span class="skill-val">Telegram Bot · LinkedIn REST · Gmail OAuth2 · Google Sheets/Docs · Supabase</span></div>
+        <div class="skill-group"><span class="skill-label">Machine Learning:</span> <span class="skill-val">Python · Scikit-learn · XGBoost · Random Forest · NLP / TF-IDF · CNN / RNN</span></div>
+        <div class="skill-group"><span class="skill-label">Data &amp; Cloud:</span> <span class="skill-val">PostgreSQL · SQL · Power BI · Tableau · AWS · Google Cloud</span></div>
+        <div class="skill-group"><span class="skill-label">Tools:</span> <span class="skill-val">Git / GitHub · VS Code · Jupyter · Docker (basics) · Linux</span></div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section class="block">
+        <h2 class="section"><i class="ri-graduation-cap-line"></i> Education</h2>
+
+        <div class="entry">
+          <div class="entry-head">
+            <div>
+              <span class="entry-role">MSc Computer Science</span>
+              <div class="entry-org">University of East London — <em>London, UK</em></div>
+            </div>
+          </div>
+          <div class="entry-sub">Focus: AI systems, automation, applied machine learning</div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <div>
+              <span class="entry-role">MSc Dissertation Research</span>
+              <div class="entry-org">University of Hertfordshire — <em>Hertfordshire, UK</em></div>
+            </div>
+            <span class="entry-date">Jun 2025 – Sep 2025</span>
+          </div>
+          <div class="entry-sub">ML-based GPS spoofing detection for drone delivery (99.95% accuracy)</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============ CERTIFICATIONS ============ -->
+    <section class="block">
+      <h2 class="section"><i class="ri-medal-line"></i> Certifications</h2>
+      <div class="cert-list">
+        <span>AWS Academy Cloud Foundations — Amazon Web Services</span>
+        <span>Machine Learning, Deep Learning &amp; Image Processing — MATLAB Onramps</span>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
