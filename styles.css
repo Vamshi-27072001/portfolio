@@ -253,6 +253,13 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .project-description p{font-size:.88rem;color:var(--text-secondary);line-height:1.75;margin-bottom:14px}
 .project-description strong{color:var(--text);font-weight:600}
 
+/* Project bullet lists (result-driven resume style) */
+.project-bullets{list-style:none;padding:0;margin:0 0 18px 0;display:flex;flex-direction:column;gap:12px}
+.project-bullets li{position:relative;padding:12px 14px 12px 38px;font-size:.88rem;color:var(--text-secondary);line-height:1.7;background:var(--bg-alt);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--r-sm);transition:all var(--transition)}
+.project-bullets li:hover{border-color:var(--border-hover);border-left-color:var(--accent);transform:translateX(2px);box-shadow:0 2px 10px rgba(99,102,241,.06)}
+.project-bullets li::before{content:"\2192";position:absolute;left:14px;top:12px;color:var(--accent);font-weight:700;font-size:.95rem;line-height:1.7}
+.project-bullets li strong{color:var(--text);font-weight:600}
+
 /* Impact Grid */
 .project-impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
 .project-impact-grid.compact{grid-template-columns:repeat(3,1fr)}
