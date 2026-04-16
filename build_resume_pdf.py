@@ -1,33 +1,29 @@
 """
-Generate a tight 1-page PDF resume: Vamshi_Yadav_Golla_Resume.pdf
-Matches the portfolio styling. Designed to fit on a single A4 page.
+Generate a clean 1-page PDF resume: Vamshi_Yadav_Golla_Resume.pdf
+4 flagship projects only, 2 tight bullets each, generous whitespace.
 Run: python build_resume_pdf.py
 """
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
 from reportlab.pdfgen import canvas
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.colors import HexColor
 import os
 
 OUT = "Vamshi_Yadav_Golla_Resume.pdf"
 
-# Colors (match portfolio palette)
-INK = HexColor("#0F172A")
-INK2 = HexColor("#334155")
-MUTED = HexColor("#64748B")
-ACCENT = HexColor("#6366F1")
-RULE = HexColor("#E2E8F0")
+# ----- Palette (matches portfolio) -----
+INK = HexColor("#0F172A")      # primary text / names / bold
+INK2 = HexColor("#334155")     # body text
+MUTED = HexColor("#64748B")    # dates, subtle meta
+ACCENT = HexColor("#6366F1")   # section headers, bullets, highlights
+RULE = HexColor("#E2E8F0")     # section underlines
 
-# Page geometry
+# ----- Page -----
 W, H = A4
-MARGIN_X = 14 * mm
-MARGIN_TOP = 12 * mm
-MARGIN_BOTTOM = 10 * mm
+MARGIN_X = 16 * mm
+MARGIN_TOP = 14 * mm
 CONTENT_W = W - 2 * MARGIN_X
 
-# Fonts (use built-in Helvetica — universal)
 FONT = "Helvetica"
 FONT_B = "Helvetica-Bold"
 FONT_I = "Helvetica-Oblique"
@@ -35,30 +31,31 @@ FONT_I = "Helvetica-Oblique"
 c = canvas.Canvas(OUT, pagesize=A4)
 c.setTitle("Vamshi Yadav Golla — Resume")
 c.setAuthor("Vamshi Yadav Golla")
+c.setSubject("AI Agent Engineer & Automation Architect")
 
 y = H - MARGIN_TOP
 
 
 def set_font(size, bold=False, italic=False):
-    f = FONT
     if bold and italic:
-        f = "Helvetica-BoldOblique"
+        c.setFont("Helvetica-BoldOblique", size)
     elif bold:
-        f = FONT_B
+        c.setFont(FONT_B, size)
     elif italic:
-        f = FONT_I
-    c.setFont(f, size)
+        c.setFont(FONT_I, size)
+    else:
+        c.setFont(FONT, size)
 
 
-def draw_wrapped(x, y, text, max_w, size, leading, color=INK2, bold=False, italic=False):
-    """Draw text wrapped to max_w, return new y."""
-    set_font(size, bold, italic)
+def draw_wrapped(x, y, text, max_w, size, leading, color=INK2, bold=False):
+    set_font(size, bold)
     c.setFillColor(color)
     words = text.split()
     line = ""
+    fn = FONT_B if bold else FONT
     for w in words:
         test = (line + " " + w).strip()
-        if c.stringWidth(test, FONT_B if bold else FONT, size) <= max_w:
+        if c.stringWidth(test, fn, size) <= max_w:
             line = test
         else:
             c.drawString(x, y, line)
@@ -70,257 +67,255 @@ def draw_wrapped(x, y, text, max_w, size, leading, color=INK2, bold=False, itali
     return y
 
 
-def draw_bold_inline(x, y, segments, max_w, size=8.2, leading=10.2):
-    """segments: list of (text, bold) — renders inline with bold parts mixed in."""
-    # Tokenize into words keeping bold flag
+def inline(x, y, segments, max_w, size=9, leading=11.5, base_color=INK2, bold_color=INK):
+    """Render mixed bold/regular inline runs with wrapping."""
     tokens = []
     for text, bold in segments:
         parts = text.split(" ")
         for i, p in enumerate(parts):
             if i > 0:
-                tokens.append((" ", bold))  # space carries bold flag of trailing text (doesn't matter)
+                tokens.append((" ", bold))
             if p:
                 tokens.append((p, bold))
-    # Build lines respecting max width
-    line = []  # list of (text, bold, width)
-    line_w = 0
-    c.setFillColor(INK2)
+    line, line_w = [], 0
     for tok, bold in tokens:
         fn = FONT_B if bold else FONT
-        w = c.stringWidth(tok, fn, size)
-        if line_w + w <= max_w:
-            line.append((tok, bold, w))
-            line_w += w
+        tw = c.stringWidth(tok, fn, size)
+        if line_w + tw <= max_w:
+            line.append((tok, bold, tw))
+            line_w += tw
         else:
-            # flush line
             cx = x
-            for t, b, tw in line:
+            for t, b, w_ in line:
                 c.setFont(FONT_B if b else FONT, size)
-                c.setFillColor(INK if b else INK2)
+                c.setFillColor(bold_color if b else base_color)
                 c.drawString(cx, y, t)
-                cx += tw
+                cx += w_
             y -= leading
-            # new line — skip leading spaces
             if tok.strip() == "":
                 line, line_w = [], 0
             else:
-                line = [(tok, bold, w)]
-                line_w = w
+                line, line_w = [(tok, bold, tw)], tw
     if line:
         cx = x
-        for t, b, tw in line:
+        for t, b, w_ in line:
             c.setFont(FONT_B if b else FONT, size)
-            c.setFillColor(INK if b else INK2)
+            c.setFillColor(bold_color if b else base_color)
             c.drawString(cx, y, t)
-            cx += tw
+            cx += w_
         y -= leading
     return y
 
 
-def section_header(y, title):
-    """Render a section header with a bottom rule."""
-    set_font(8.4, bold=True)
+def section(y, title):
+    """Section header: small caps + thin accent rule."""
+    y -= 4
+    set_font(8.6, bold=True)
     c.setFillColor(ACCENT)
     c.drawString(MARGIN_X, y, title.upper())
-    # Rule under the text
-    y -= 2
+    # Tracked letter-spacing via manual redraw isn't needed — keep simple
+    y -= 3
     c.setStrokeColor(RULE)
     c.setLineWidth(0.6)
     c.line(MARGIN_X, y, MARGIN_X + CONTENT_W, y)
-    return y - 7
-
-
-def role_line(y, role, org, date):
-    """Role + date on one line, org underneath."""
-    set_font(9, bold=True)
-    c.setFillColor(INK)
-    c.drawString(MARGIN_X, y, role)
-    # date right-aligned
-    if date:
-        set_font(7.8)
-        c.setFillColor(MUTED)
-        c.drawRightString(MARGIN_X + CONTENT_W, y, date)
-    y -= 10.5
-    set_font(8, italic=False)
-    c.setFillColor(INK2)
-    c.drawString(MARGIN_X, y, org)
     return y - 9
 
 
-def bullet(y, segments, bullet_char="\u2022", indent=9, size=8.2, leading=10.2):
-    """Render a bullet with bold inline support."""
-    # Bullet mark
-    set_font(size, bold=False)
+def role_line(y, role, org_meta, date):
+    """Role (bold, dark) left · date (muted) right · org/meta underneath."""
+    set_font(9.4, bold=True)
+    c.setFillColor(INK)
+    c.drawString(MARGIN_X, y, role)
+    if date:
+        set_font(8.2)
+        c.setFillColor(MUTED)
+        c.drawRightString(MARGIN_X + CONTENT_W, y, date)
+    y -= 11
+    set_font(8.4)
+    c.setFillColor(INK2)
+    c.drawString(MARGIN_X, y, org_meta)
+    return y - 10
+
+
+def bullet(y, segments, indent=10, size=8.8, leading=11):
+    """Bullet with accent mark + mixed bold/regular wrapped body."""
+    set_font(size)
     c.setFillColor(ACCENT)
-    c.drawString(MARGIN_X + 2, y, bullet_char)
-    # Body (wrapped, with bold)
-    new_y = draw_bold_inline(MARGIN_X + indent, y, segments, CONTENT_W - indent, size=size, leading=leading)
-    return new_y - 1
+    c.drawString(MARGIN_X + 1, y, "\u2022")
+    return inline(MARGIN_X + indent, y, segments, CONTENT_W - indent, size=size, leading=leading) - 2
 
 
-def stack_line(y, stack, link=None):
-    set_font(7.4)
+def stack_line(y, stack):
+    set_font(7.6, italic=True)
     c.setFillColor(MUTED)
-    full = f"Stack: {stack}" + (f"   |   {link}" if link else "")
-    # keep on one line if possible; else wrap
-    if c.stringWidth(full, FONT, 7.4) <= CONTENT_W:
-        c.drawString(MARGIN_X, y, full)
-        return y - 9.5
-    else:
-        return draw_wrapped(MARGIN_X, y, full, CONTENT_W, 7.4, 9, color=MUTED)
+    label = "Stack:"
+    label_w = c.stringWidth(label + " ", FONT_I, 7.6)
+    c.drawString(MARGIN_X + 10, y, label)
+    set_font(7.6)
+    c.drawString(MARGIN_X + 10 + label_w, y, stack)
+    return y - 12
 
 
-# ============ HEADER ============
+# ================== HEADER ==================
 set_font(22, bold=True)
 c.setFillColor(INK)
 c.drawString(MARGIN_X, y, "Vamshi Yadav Golla")
-# Right-side: title
-set_font(9.2, bold=True)
+set_font(9.4, bold=True)
 c.setFillColor(ACCENT)
-c.drawRightString(MARGIN_X + CONTENT_W, y + 2, "AI Agent Engineer & Automation Architect")
-y -= 13
+c.drawRightString(MARGIN_X + CONTENT_W, y + 3, "AI Agent Engineer & Automation Architect")
+y -= 14
 
-# Contact line
-set_font(7.8)
+# Contact line (two logical groups separated by middots)
+set_font(8.2)
 c.setFillColor(INK2)
-contact = "London, UK  \u2022  Vamshiyadav2783@gmail.com  \u2022  +44 7887 132 409  \u2022  linkedin.com/in/vamshi-yadav869  \u2022  github.com/Vamshi-27072001  \u2022  vamshi-27072001.github.io/portfolio"
+contact = ("London, UK  \u2022  Vamshiyadav2783@gmail.com  \u2022  +44 7887 132 409  \u2022  "
+           "linkedin.com/in/vamshi-yadav869  \u2022  github.com/Vamshi-27072001  \u2022  "
+           "vamshi-27072001.github.io/portfolio")
 c.drawString(MARGIN_X, y, contact)
-y -= 5
-# Header rule
+y -= 7
 c.setStrokeColor(INK)
-c.setLineWidth(1.2)
+c.setLineWidth(1.3)
 c.line(MARGIN_X, y, MARGIN_X + CONTENT_W, y)
-y -= 8
+y -= 10
 
-# ============ SUMMARY ============
-y = section_header(y, "Professional Summary")
-y = draw_bold_inline(
+# ================== SUMMARY ==================
+y = section(y, "Summary")
+y = inline(
     MARGIN_X, y,
     [
         ("AI Agent Engineer", True),
         (" specialising in autonomous AI systems on ", False),
         ("n8n, LangChain, and GPT-4o", True),
         (". Shipped ", False),
-        ("6 production projects", True),
+        ("3 production AI agents", True),
         (" delivering ", False),
         ("£36K+/year business impact", True),
-        (" — including a ", False),
+        (", including a ", False),
         ("99.98% cost-reduction chatbot", True),
-        (", a zero-touch LinkedIn publishing pipeline, and an ML GPS-spoofing detector at ", False),
-        ("99.95% accuracy", True),
-        (". MSc Computer Science (UEL). Interviewing for UK AI Engineer / Automation / ML roles — Graduate Visa eligible.", False),
+        (" and a zero-touch LinkedIn publishing pipeline. MSc Computer Science (UEL). Interviewing for UK AI Engineer / Automation / ML roles — Graduate Visa eligible.", False),
     ],
-    CONTENT_W, size=8.4, leading=10.4
+    CONTENT_W, size=9, leading=11.5
 )
 y -= 2
 
-# ============ EXPERIENCE ============
-y = section_header(y, "Professional Experience")
+# ================== EXPERIENCE ==================
+y = section(y, "Experience")
 y = role_line(y, "Cyber Security Intern", "Lexnis Services Limited — Hertfordshire, UK", "Nov 2025 – Present")
 for seg in [
-    [("Conducted market analysis of 10 UK vehicle tracking companies", True), (" across 5 benchmarking criteria; produced a decision-ready competitive matrix.", False)],
-    [("Mapped 15+ product features per provider", True), (" and recommended best-fit GPS tracking solutions by customer segment.", False)],
-    [("Identified a market gap supporting a £9,100/month operational model", True), (" feeding directly into go-to-market strategy.", False)],
-    [("Used AI tools (GPT-4, Google suite) to produce research reports", True), (" that informed 3 major business decisions at 4\u00D7 analysis throughput.", False)],
+    [("Analysed 10 UK vehicle tracking companies across 5 benchmarking criteria", True),
+     (" and mapped 15+ product features per provider to produce a decision-ready competitive matrix.", False)],
+    [("Identified a market gap supporting a £9,100/month operational model", True),
+     (", feeding directly into the company's go-to-market strategy.", False)],
+    [("Leveraged GPT-4 and Google tools", True),
+     (" to produce research reports that informed 3 major business decisions at 4\u00D7 analysis throughput.", False)],
 ]:
     y = bullet(y, seg)
-y -= 1
+y -= 4
 
-# ============ PROJECTS ============
-y = section_header(y, "Flagship Projects")
+# ================== PROJECTS ==================
+y = section(y, "Flagship Projects")
 
-# Project 1
-y = role_line(y, "NSP Cases — AI Email Enquiry Handler", "Autonomous customer-service pipeline  \u2022  Production", "Apr 2026")
+# ---- 1 ---- NSP
+y = role_line(y, "NSP Cases — AI Email Enquiry Handler",
+              "Autonomous customer-service pipeline  \u2022  Production",
+              "Apr 2026")
 for seg in [
-    [("Engineered a 19-node n8n workflow replacing a human customer-service agent", True), (" — Gmail to knowledge-base to HTML reply end-to-end in ", False), ("under 60 seconds, zero human intervention", True), (".", False)],
-    [("Integrated GPT-4o Vision for multimodal enquiries", True), (" — auto-analyses product drawings/images, removing the #1 friction in technical sales.", False)],
+    [("Engineered a 19-node n8n + LangChain workflow", True),
+     (" that replaces a human customer-service agent — Gmail \u2192 7-tab knowledge base \u2192 HTML reply end-to-end in ", False),
+     ("under 60 seconds, zero human intervention", True), (".", False)],
+    [("Integrated GPT-4o Vision for multimodal enquiries", True),
+     (" (text + product drawings/images) with a Supabase PostgreSQL audit trail for regulatory traceability.", False)],
 ]:
     y = bullet(y, seg)
-y = stack_line(y, "n8n \u00B7 LangChain \u00B7 GPT-4.1-mini \u00B7 GPT-4o Vision \u00B7 Gmail OAuth2 \u00B7 Supabase", "github.com/Vamshi27072001/NSP-email-enquiry")
+y = stack_line(y, "n8n \u00B7 LangChain \u00B7 GPT-4.1-mini \u00B7 GPT-4o Vision \u00B7 Gmail OAuth2 \u00B7 Supabase PostgreSQL")
 
-# Project 2
-y = role_line(y, "Restaurant AI Agent — Taco Bell UK", "Zero-hallucination chatbot  \u2022  Production", "Apr 2026")
+# ---- 2 ---- Restaurant
+y = role_line(y, "Restaurant AI Agent — Taco Bell UK",
+              "Zero-hallucination chatbot  \u2022  Production",
+              "Apr 2026")
 for seg in [
-    [("Deployed an 11-node LangChain agent on Telegram (GPT-4o-mini)", True), (" — menu, allergen, nutrition ", False), ("24/7 at sub-2-second latency", True), (".", False)],
-    [("Drove operating costs from £12,000/yr to £36/yr (99.98% reduction)", True), (" with full EU/UK allergen compliance across 100+ items.", False)],
+    [("Deployed an 11-node LangChain agent on Telegram (GPT-4o-mini)", True),
+     (" serving 100+ menu items with full EU/UK allergen compliance, ", False),
+     ("24/7 at sub-2-second latency", True), (".", False)],
+    [("Drove operating costs from £12,000/year to £36/year (99.98% reduction)", True),
+     (" via strict tool-first routing that guarantees zero hallucinations.", False)],
 ]:
     y = bullet(y, seg)
-y = stack_line(y, "n8n \u00B7 LangChain \u00B7 GPT-4o-mini \u00B7 Telegram \u00B7 Google Sheets \u00B7 PostgreSQL", "github.com/Vamshi-27072001/restaurant-ai-agent")
+y = stack_line(y, "n8n \u00B7 LangChain \u00B7 GPT-4o-mini \u00B7 Telegram Bot \u00B7 Google Sheets / Docs \u00B7 PostgreSQL")
 
-# Project 3
-y = role_line(y, "LinkedIn Post Manager — AI Content Engine", "Telegram-to-LinkedIn automation  \u2022  Production", "Apr 2026")
+# ---- 3 ---- LinkedIn
+y = role_line(y, "LinkedIn Post Manager — AI Content Engine",
+              "Telegram-to-LinkedIn publishing  \u2022  Production",
+              "Apr 2026")
 for seg in [
-    [("Built a 13-node autonomous Telegram-to-LinkedIn publishing engine", True), (" (GPT-4.1-mini + OpenAI Images + LinkedIn ugcPosts API) eliminating every human touchpoint.", False)],
-    [("Cut content creation time 98% (25 min \u2192 30 sec)", True), (" and saved ", False), ("£24,000/year in outsourced social costs", True), (" at £0.01 per post.", False)],
+    [("Built a 13-node autonomous Telegram-to-LinkedIn publishing engine", True),
+     (" (GPT-4.1-mini + OpenAI Images API + LinkedIn ugcPosts) eliminating every human touchpoint.", False)],
+    [("Cut content creation time 98% (25 min \u2192 30 sec)", True),
+     (", saving ", False),
+     ("£24,000/year in outsourced social costs", True),
+     (" at £0.01 per post.", False)],
 ]:
     y = bullet(y, seg)
-y = stack_line(y, "n8n \u00B7 LangChain \u00B7 GPT-4.1-mini \u00B7 OpenAI Images API \u00B7 LinkedIn REST \u00B7 OAuth2", "github.com/Vamshi-27072001/telegram-linkedin-agent")
+y = stack_line(y, "n8n \u00B7 LangChain \u00B7 GPT-4.1-mini \u00B7 OpenAI Images API \u00B7 LinkedIn REST \u00B7 OAuth2")
 
-# Project 4
-y = role_line(y, "ML-Based GPS Spoofing Detection for Drone Delivery", "MSc Dissertation  \u2022  University of East London", "Jun – Sep 2025")
+# ---- 4 ---- MSc Dissertation
+y = role_line(y, "ML-Based GPS Spoofing Detection for Drone Delivery",
+              "MSc Dissertation  \u2022  University of East London",
+              "Jun – Sep 2025")
 for seg in [
-    [("Trained Random Forest & XGBoost classifiers to 99.95% / 99.90% accuracy", True), (" on 62,000+ telemetry records; false-positive rate <0.05%.", False)],
-    [("Deployed real-time detection on Raspberry Pi", True), (" with autonomous countermeasures (hover, reroute, return-to-base).", False)],
+    [("Trained Random Forest & XGBoost classifiers to 99.95% / 99.90% accuracy", True),
+     (" on 62,000+ telemetry records with a ", False),
+     ("false-positive rate under 0.05%", True),
+     (" — exceeding aviation safety thresholds.", False)],
+    [("Deployed a real-time detection pipeline on Raspberry Pi", True),
+     (" with autonomous countermeasures (hover, reroute, return-to-base); validated against simulated spoofing attacks.", False)],
 ]:
     y = bullet(y, seg)
-y = stack_line(y, "Python \u00B7 Scikit-learn \u00B7 XGBoost \u00B7 Random Forest \u00B7 Pandas \u00B7 Raspberry Pi")
-
-# Projects 5 + 6 — compact single line
-set_font(9, bold=True)
-c.setFillColor(INK)
-c.drawString(MARGIN_X, y, "Disaster Tweet NLP Classifier")
-set_font(7.8)
-c.setFillColor(MUTED)
-c.drawRightString(MARGIN_X + CONTENT_W, y, "Kaggle \u2022 2025")
-y -= 10
-y = bullet(y, [("87% accuracy NLP pipeline", True), (" (TF-IDF + Logistic Regression) on 7,000+ tweets — +15% over baseline; recovered 90% of missing geolocation data for geospatial analysis.", False)])
-
-set_font(9, bold=True)
-c.setFillColor(INK)
-c.drawString(MARGIN_X, y, "Zomato Dataset Analysis & Consumer Insights")
-set_font(7.8)
-c.setFillColor(MUTED)
-c.drawRightString(MARGIN_X + CONTENT_W, y, "Feb 2025")
-y -= 10
-y = bullet(y, [("Quantified 65% online delivery adoption and a 10–15% ratings uplift", True), (" from digital presence; sentiment analysis across thousands of reviews surfaced top 3 operational rating drivers.", False)])
+y = stack_line(y, "Python \u00B7 Scikit-learn \u00B7 XGBoost \u00B7 Random Forest \u00B7 Pandas \u00B7 NumPy \u00B7 Raspberry Pi")
 y -= 2
 
-# ============ SKILLS ============
-y = section_header(y, "Technical Skills")
-skills = [
-    ("AI Agents", "LangChain \u00B7 n8n \u00B7 Agent Architecture \u00B7 Prompt Engineering \u00B7 Tool-First Routing \u00B7 MCP"),
+# ================== SKILLS ==================
+y = section(y, "Technical Skills")
+for label, val in [
+    ("AI Agents",   "LangChain \u00B7 n8n \u00B7 Agent Architecture \u00B7 Prompt Engineering \u00B7 Tool-First Routing \u00B7 MCP"),
     ("LLMs & APIs", "GPT-4o \u00B7 GPT-4.1-mini \u00B7 Claude API \u00B7 OpenAI Vision / Images \u00B7 REST \u00B7 OAuth2"),
-    ("Integrations", "Telegram Bot \u00B7 LinkedIn REST \u00B7 Gmail \u00B7 Google Sheets/Docs \u00B7 Supabase"),
-    ("ML / Data", "Python \u00B7 Scikit-learn \u00B7 XGBoost \u00B7 Random Forest \u00B7 NLP / TF-IDF \u00B7 CNN / RNN \u00B7 PostgreSQL \u00B7 Power BI \u00B7 Tableau \u00B7 AWS \u00B7 GCP"),
-]
-for label, val in skills:
-    set_font(8, bold=True)
+    ("Integrations","Telegram Bot \u00B7 LinkedIn REST \u00B7 Gmail \u00B7 Google Sheets / Docs \u00B7 Supabase"),
+    ("ML & Data",   "Python \u00B7 Scikit-learn \u00B7 XGBoost \u00B7 Random Forest \u00B7 NLP \u00B7 PostgreSQL \u00B7 Power BI \u00B7 Tableau \u00B7 AWS \u00B7 GCP"),
+]:
+    set_font(8.6, bold=True)
     c.setFillColor(INK)
-    label_w = c.stringWidth(label + ": ", FONT_B, 8)
+    lw = c.stringWidth(label + ":  ", FONT_B, 8.6)
     c.drawString(MARGIN_X, y, label + ":")
-    y = draw_wrapped(MARGIN_X + label_w, y, val, CONTENT_W - label_w, 8, 10, color=INK2)
-    y -= 0
+    set_font(8.6)
+    c.setFillColor(INK2)
+    c.drawString(MARGIN_X + lw, y, val)
+    y -= 11.5
+y -= 3
 
-# ============ EDUCATION + CERTS ============
-y = section_header(y, "Education & Certifications")
-set_font(8.8, bold=True)
+# ================== EDUCATION & CERTS ==================
+y = section(y, "Education & Certifications")
+set_font(9.4, bold=True)
 c.setFillColor(INK)
-c.drawString(MARGIN_X, y, "MSc Computer Science — University of East London, London, UK")
-y -= 9.5
-set_font(7.8, italic=True)
-c.setFillColor(MUTED)
-c.drawString(MARGIN_X, y, "Focus: AI systems, automation, applied ML. Dissertation: ML-based GPS spoofing detection (99.95% accuracy).")
+c.drawString(MARGIN_X, y, "MSc Computer Science")
+set_font(8.8)
+c.setFillColor(INK2)
+role_w = c.stringWidth("MSc Computer Science   ", FONT_B, 9.4)
+c.drawString(MARGIN_X + role_w, y, "University of East London — London, UK")
 y -= 11
-# Certs as one line
-set_font(8, bold=True)
+set_font(8, italic=True)
+c.setFillColor(MUTED)
+c.drawString(MARGIN_X, y, "Focus: AI systems, automation, applied machine learning. Dissertation: ML-based GPS spoofing detection (99.95% accuracy).")
+y -= 13
+
+set_font(8.6, bold=True)
 c.setFillColor(INK)
 c.drawString(MARGIN_X, y, "Certifications:")
-cert_x = MARGIN_X + c.stringWidth("Certifications: ", FONT_B, 8)
-set_font(8)
+cert_x = MARGIN_X + c.stringWidth("Certifications:  ", FONT_B, 8.6)
+set_font(8.6)
 c.setFillColor(INK2)
 c.drawString(cert_x, y, "AWS Academy Cloud Foundations  \u00B7  MATLAB Onramps (ML, Deep Learning, Image Processing)")
 
-# ============ SAVE ============
+# ================== SAVE ==================
 c.showPage()
 c.save()
 print(f"Saved: {OUT}  ({os.path.getsize(OUT)/1024:.1f} KB, 1 page)")
