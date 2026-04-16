@@ -1,163 +1,288 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="NSP Cases AI Email Handler demo thumbnail">
   <defs>
-    <linearGradient id="nspBg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#EEF4FF"/>
-      <stop offset="1" stop-color="#C7D7F5"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0A0F1E"/>
+      <stop offset="1" stop-color="#0D1B3E"/>
     </linearGradient>
-    <linearGradient id="nspBtn" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#4F46E5"/>
-      <stop offset="1" stop-color="#6366F1"/>
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#141D35"/>
+      <stop offset="1" stop-color="#0F172A"/>
     </linearGradient>
-    <linearGradient id="nspAccent" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="replyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1E1B4B"/>
+      <stop offset="1" stop-color="#312E81"/>
+    </linearGradient>
+    <linearGradient id="btnGrad" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#4F46E5"/>
       <stop offset="1" stop-color="#7C3AED"/>
     </linearGradient>
-    <filter id="nspShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
-      <feOffset dx="0" dy="4" result="o"/>
-      <feComponentTransfer><feFuncA type="linear" slope="0.25"/></feComponentTransfer>
+    <linearGradient id="glowLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4F46E5" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#4F46E5"/>
+      <stop offset="1" stop-color="#7C3AED" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
+      <feOffset dx="0" dy="6"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.5"/></feComponentTransfer>
       <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
 
-  <!-- Background -->
-  <rect width="1600" height="900" fill="url(#nspBg)"/>
+  <!-- Dark background -->
+  <rect width="1600" height="900" fill="url(#bg)"/>
 
-  <!-- Decorative leaf-like blobs (right side) -->
-  <g opacity="0.7">
-    <path d="M1300 -20 C 1420 80 1480 220 1430 360 C 1380 500 1240 540 1130 480 C 1030 420 1040 280 1120 180 C 1200 80 1230 -40 1300 -20 Z" fill="#A9C1F0" opacity="0.4"/>
-    <path d="M1500 600 C 1580 680 1600 820 1540 900 L 1100 900 C 1140 820 1240 760 1320 720 C 1400 680 1460 640 1500 600 Z" fill="#9CB5EB" opacity="0.35"/>
+  <!-- Ambient glow blobs -->
+  <circle cx="300" cy="500" r="280" fill="#4F46E5" opacity="0.07"/>
+  <circle cx="1300" cy="400" r="320" fill="#7C3AED" opacity="0.07"/>
+  <circle cx="800" cy="100" r="180" fill="#4F46E5" opacity="0.05"/>
+
+  <!-- Grid lines (subtle tech feel) -->
+  <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
+    <line x1="0" y1="180" x2="1600" y2="180"/>
+    <line x1="0" y1="360" x2="1600" y2="360"/>
+    <line x1="0" y1="540" x2="1600" y2="540"/>
+    <line x1="0" y1="720" x2="1600" y2="720"/>
+    <line x1="320" y1="0" x2="320" y2="900"/>
+    <line x1="640" y1="0" x2="640" y2="900"/>
+    <line x1="960" y1="0" x2="960" y2="900"/>
+    <line x1="1280" y1="0" x2="1280" y2="900"/>
   </g>
 
-  <!-- Top nav mockup -->
-  <g font-family="Inter, Segoe UI, system-ui, sans-serif">
-    <!-- Logo block -->
-    <rect x="70" y="54" width="44" height="44" rx="8" fill="url(#nspAccent)"/>
-    <rect x="82" y="66" width="20" height="3" rx="1.5" fill="#ffffff"/>
-    <rect x="82" y="74" width="20" height="3" rx="1.5" fill="#ffffff"/>
-    <rect x="82" y="82" width="20" height="3" rx="1.5" fill="#ffffff"/>
-    <text x="130" y="86" font-size="22" font-weight="700" fill="#1E293B" letter-spacing="1">NSP CASES</text>
-    <!-- Nav links -->
-    <g font-size="18" font-weight="500" fill="#334155">
-      <text x="1050" y="82">Home</text>
-      <text x="1160" y="82">Enquiries</text>
-      <text x="1305" y="82">Products</text>
-      <text x="1440" y="82">Contact</text>
+  <!-- ======= LEFT PANEL: Gmail-style inbox ======= -->
+  <g transform="translate(54 100)" filter="url(#softShadow)">
+    <!-- Panel bg -->
+    <rect width="420" height="680" rx="16" fill="url(#cardGrad)" stroke="#1E3A5F" stroke-width="1.5"/>
+
+    <!-- Gmail top bar -->
+    <rect width="420" height="52" rx="16" fill="#141D35"/>
+    <rect y="36" width="420" height="16" fill="#141D35"/>
+    <!-- Gmail logo text -->
+    <text x="20" y="34" font-family="Inter, Segoe UI, sans-serif" font-size="20" font-weight="700" fill="#EA4335">G</text>
+    <text x="34" y="34" font-family="Inter, Segoe UI, sans-serif" font-size="20" font-weight="700" fill="#4285F4">m</text>
+    <text x="50" y="34" font-family="Inter, Segoe UI, sans-serif" font-size="20" font-weight="700" fill="#FBBC05">a</text>
+    <text x="64" y="34" font-family="Inter, Segoe UI, sans-serif" font-size="20" font-weight="700" fill="#34A853">i</text>
+    <text x="72" y="34" font-family="Inter, Segoe UI, sans-serif" font-size="20" font-weight="700" fill="#EA4335">l</text>
+    <!-- Unread badge -->
+    <rect x="120" y="14" width="90" height="22" rx="11" fill="#EF4444"/>
+    <text x="165" y="30" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#ffffff">UNREAD 3</text>
+    <!-- Trigger badge -->
+    <rect x="300" y="14" width="104" height="22" rx="11" fill="#4F46E5" fill-opacity="0.9"/>
+    <text x="352" y="30" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#ffffff">TRIGGERED</text>
+
+    <!-- Email row 1 — active/highlighted -->
+    <rect y="52" width="420" height="84" fill="#1A2550"/>
+    <rect y="52" width="4" fill="#4F46E5" height="84"/>
+    <circle cx="34" cy="94" r="18" fill="#4F46E5"/>
+    <text x="34" y="100" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#ffffff">JB</text>
+    <text x="62" y="80" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#ffffff">James Birch</text>
+    <text x="62" y="99" font-family="Inter, Segoe UI, sans-serif" font-size="13" fill="#94A3B8">Custom case for DJI Mavic 3 Pro...</text>
+    <text x="62" y="116" font-family="Inter, Segoe UI, sans-serif" font-size="12" fill="#64748B">Attachment: drawing.png</text>
+    <text x="394" y="80" text-anchor="end" font-family="Inter, Segoe UI, sans-serif" font-size="12" fill="#64748B">09:14</text>
+    <circle cx="405" cy="94" r="5" fill="#4F46E5"/>
+
+    <!-- Email row 2 -->
+    <rect y="136" width="420" height="1" fill="#1E3A5F"/>
+    <circle cx="34" cy="179" r="18" fill="#0EA5E9" opacity="0.8"/>
+    <text x="34" y="185" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#ffffff">SK</text>
+    <text x="62" y="165" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#CBD5E1">Sarah Kim</text>
+    <text x="62" y="184" font-family="Inter, Segoe UI, sans-serif" font-size="13" fill="#64748B">Bulk order quote — 50 units...</text>
+    <text x="394" y="165" text-anchor="end" font-family="Inter, Segoe UI, sans-serif" font-size="12" fill="#64748B">08:52</text>
+    <circle cx="405" cy="179" r="5" fill="#0EA5E9"/>
+
+    <!-- Email row 3 -->
+    <rect y="220" width="420" height="1" fill="#1E3A5F"/>
+    <circle cx="34" cy="263" r="18" fill="#22C55E" opacity="0.8"/>
+    <text x="34" y="269" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#ffffff">TP</text>
+    <text x="62" y="249" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#CBD5E1">Tom Parker</text>
+    <text x="62" y="268" font-family="Inter, Segoe UI, sans-serif" font-size="13" fill="#64748B">Material options for foam lining...</text>
+    <text x="394" y="249" text-anchor="end" font-family="Inter, Segoe UI, sans-serif" font-size="12" fill="#64748B">08:31</text>
+
+    <!-- Email row 4 (read) -->
+    <rect y="304" width="420" height="1" fill="#1E3A5F"/>
+    <circle cx="34" cy="347" r="18" fill="#475569"/>
+    <text x="34" y="353" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#94A3B8">MR</text>
+    <text x="62" y="333" font-family="Inter, Segoe UI, sans-serif" font-size="15" fill="#64748B">Mike Reynolds</text>
+    <text x="62" y="352" font-family="Inter, Segoe UI, sans-serif" font-size="13" fill="#475569">Re: shipping timeline for order #...</text>
+    <text x="394" y="333" text-anchor="end" font-family="Inter, Segoe UI, sans-serif" font-size="12" fill="#475569">Yesterday</text>
+
+    <!-- Divider -->
+    <rect y="388" width="420" height="1" fill="#1E3A5F"/>
+
+    <!-- "Processing" label -->
+    <g transform="translate(20 408)">
+      <circle r="6" cx="6" cy="6" fill="#FBBF24"/>
+      <text x="20" y="11" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#FBBF24">AI Agent processing…</text>
     </g>
-    <!-- Nav underline -->
-    <rect x="70" y="120" width="1460" height="1" fill="#1E293B" opacity="0.08"/>
-  </g>
 
-  <!-- LEFT: Copy block -->
-  <g font-family="Inter, Segoe UI, system-ui, sans-serif">
-    <text x="90" y="300" font-size="22" font-weight="600" fill="#4F46E5" letter-spacing="4">AI AGENT &#8226; LIVE</text>
-    <text x="90" y="400" font-size="98" font-weight="800" fill="#0F172A" letter-spacing="-3">AI Email</text>
-    <text x="90" y="490" font-size="98" font-weight="800" fill="#0F172A" letter-spacing="-3">Handler</text>
-    <!-- Accent underline -->
-    <rect x="90" y="515" width="180" height="8" rx="4" fill="url(#nspAccent)"/>
+    <!-- Progress bar -->
+    <rect x="20" y="436" width="380" height="6" rx="3" fill="#1E3A5F"/>
+    <rect x="20" y="436" width="280" height="6" rx="3" fill="url(#btnGrad)"/>
 
-    <text x="90" y="580" font-size="26" font-weight="500" fill="#334155">Autonomous customer-service pipeline</text>
-    <text x="90" y="615" font-size="26" font-weight="500" fill="#334155">Gmail &#8594; AI Agent &#8594; reply in &lt; 60s</text>
-
-    <!-- Watch Demo pill CTA -->
-    <g transform="translate(90 670)" filter="url(#nspShadow)">
-      <rect x="0" y="0" width="320" height="74" rx="37" fill="url(#nspBtn)"/>
-      <path d="M40 23 L40 51 L66 37 Z" fill="#ffffff"/>
-      <text x="90" y="48" font-family="Inter, Segoe UI, system-ui, sans-serif" font-size="24" font-weight="700" fill="#ffffff" letter-spacing="2">WATCH DEMO</text>
+    <!-- 7-tab knowledge base indicator -->
+    <text x="20" y="478" font-family="Inter, Segoe UI, sans-serif" font-size="13" fill="#64748B">Knowledge base lookup</text>
+    <g transform="translate(20 492)">
+      <rect width="48" height="22" rx="4" fill="#4F46E5" fill-opacity="0.9"/>
+      <text x="24" y="16" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#fff">Menu</text>
+      <rect x="56" width="48" height="22" rx="4" fill="#7C3AED" fill-opacity="0.9"/>
+      <text x="80" y="16" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#fff">Price</text>
+      <rect x="112" width="56" height="22" rx="4" fill="#0EA5E9" fill-opacity="0.9"/>
+      <text x="140" y="16" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#fff">Materials</text>
+      <rect x="176" width="48" height="22" rx="4" fill="#22C55E" fill-opacity="0.9"/>
+      <text x="200" y="16" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#fff">Lead</text>
+      <rect x="232" width="48" height="22" rx="4" fill="#F59E0B" fill-opacity="0.9"/>
+      <text x="256" y="16" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#fff">FAQ</text>
+      <rect x="288" width="48" height="22" rx="4" fill="#64748B" fill-opacity="0.9"/>
+      <text x="312" y="16" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#fff">Size</text>
+      <rect x="344" width="46" height="22" rx="4" fill="#64748B" fill-opacity="0.9"/>
+      <text x="367" y="16" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#fff">More</text>
     </g>
 
-    <!-- Dot pagination -->
-    <g transform="translate(90 800)">
-      <circle cx="10" cy="10" r="9" fill="#4F46E5"/>
-      <circle cx="40" cy="10" r="7" fill="#CBD5E1"/>
-      <circle cx="65" cy="10" r="7" fill="#CBD5E1"/>
+    <!-- Supabase audit -->
+    <g transform="translate(20 540)">
+      <circle r="5" cx="5" cy="5" fill="#22C55E"/>
+      <text x="18" y="10" font-family="Inter, Segoe UI, sans-serif" font-size="13" fill="#22C55E">Audit trail logged → Supabase PostgreSQL</text>
     </g>
-  </g>
 
-  <!-- RIGHT: Flat illustration - person with laptop + envelopes + headset -->
-  <g transform="translate(860 200)">
-    <!-- Desk surface -->
-    <rect x="0" y="540" width="660" height="14" rx="3" fill="#4F46E5" opacity="0.25"/>
+    <!-- Bottom stat chips -->
+    <g transform="translate(20 580)">
+      <rect width="112" height="36" rx="8" fill="#0F172A" stroke="#1E3A5F" stroke-width="1"/>
+      <text x="56" y="14" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="20" font-weight="800" fill="#4F46E5">&lt;60s</text>
+      <text x="56" y="28" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="9" fill="#64748B">RESPONSE TIME</text>
 
-    <!-- Chair back -->
-    <rect x="220" y="380" width="180" height="40" rx="20" fill="#4F46E5" opacity="0.35"/>
+      <rect x="124" width="112" height="36" rx="8" fill="#0F172A" stroke="#1E3A5F" stroke-width="1"/>
+      <text x="180" y="14" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="20" font-weight="800" fill="#22C55E">19</text>
+      <text x="180" y="28" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="9" fill="#64748B">WORKFLOW NODES</text>
 
-    <!-- Person body/torso -->
-    <path d="M200 540 C 200 440 240 380 320 380 C 400 380 440 440 440 540 Z" fill="#4F46E5"/>
-    <!-- Shirt accent -->
-    <path d="M280 380 L300 420 L320 440 L340 420 L360 380" stroke="#ffffff" stroke-width="4" fill="none" opacity="0.5"/>
-
-    <!-- Neck -->
-    <rect x="304" y="340" width="32" height="50" fill="#FCD7B6"/>
-
-    <!-- Head -->
-    <circle cx="320" cy="310" r="48" fill="#FCD7B6"/>
-    <!-- Hair -->
-    <path d="M274 300 C 274 260 290 232 320 232 C 354 232 370 260 370 300 C 360 290 340 284 320 284 C 300 284 282 290 274 300 Z" fill="#3B2C1E"/>
-    <!-- Eyes -->
-    <circle cx="306" cy="312" r="3" fill="#1E293B"/>
-    <circle cx="334" cy="312" r="3" fill="#1E293B"/>
-    <!-- Smile -->
-    <path d="M308 330 Q 320 338 332 330" stroke="#1E293B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-
-    <!-- Headset -->
-    <path d="M270 290 Q 320 230 370 290" stroke="#1E293B" stroke-width="5" fill="none" stroke-linecap="round"/>
-    <rect x="260" y="284" width="18" height="26" rx="5" fill="#1E293B"/>
-    <rect x="362" y="284" width="18" height="26" rx="5" fill="#1E293B"/>
-    <!-- Mic arm -->
-    <path d="M268 310 Q 278 336 300 340" stroke="#1E293B" stroke-width="4" fill="none" stroke-linecap="round"/>
-    <circle cx="302" cy="342" r="6" fill="#EF4444"/>
-
-    <!-- Arms (behind laptop) -->
-    <path d="M220 480 L 180 540" stroke="#4F46E5" stroke-width="32" stroke-linecap="round"/>
-    <path d="M420 480 L 460 540" stroke="#4F46E5" stroke-width="32" stroke-linecap="round"/>
-    <!-- Hands -->
-    <circle cx="178" cy="544" r="14" fill="#FCD7B6"/>
-    <circle cx="462" cy="544" r="14" fill="#FCD7B6"/>
-
-    <!-- Laptop -->
-    <rect x="150" y="500" width="340" height="54" rx="4" fill="#1E293B"/>
-    <rect x="162" y="406" width="316" height="100" rx="6" fill="#1E293B"/>
-    <rect x="172" y="416" width="296" height="80" rx="3" fill="#EEF4FF"/>
-    <!-- Laptop screen content -->
-    <rect x="184" y="428" width="120" height="8" rx="2" fill="#4F46E5"/>
-    <rect x="184" y="442" width="210" height="5" rx="2" fill="#94A3B8"/>
-    <rect x="184" y="452" width="180" height="5" rx="2" fill="#94A3B8"/>
-    <rect x="184" y="462" width="200" height="5" rx="2" fill="#94A3B8"/>
-    <circle cx="444" cy="468" r="18" fill="#22C55E"/>
-    <path d="M436 468 L442 474 L454 460" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-
-    <!-- Floating envelope 1 (top-left) -->
-    <g transform="translate(40 140) rotate(-12)">
-      <rect x="0" y="0" width="110" height="72" rx="6" fill="#ffffff" stroke="#4F46E5" stroke-width="3"/>
-      <path d="M0 0 L55 40 L110 0" fill="none" stroke="#4F46E5" stroke-width="3"/>
-      <circle cx="55" cy="28" r="6" fill="#EF4444"/>
-    </g>
-    <!-- Floating envelope 2 (top-right) -->
-    <g transform="translate(520 100) rotate(14)">
-      <rect x="0" y="0" width="110" height="72" rx="6" fill="#ffffff" stroke="#4F46E5" stroke-width="3"/>
-      <path d="M0 0 L55 40 L110 0" fill="none" stroke="#4F46E5" stroke-width="3"/>
-    </g>
-    <!-- Floating envelope 3 (middle-right, opened) -->
-    <g transform="translate(560 300) rotate(8)">
-      <rect x="0" y="0" width="90" height="60" rx="5" fill="#4F46E5"/>
-      <path d="M0 0 L45 32 L90 0" fill="none" stroke="#ffffff" stroke-width="3"/>
-    </g>
-    <!-- Chat bubble -->
-    <g transform="translate(-20 300)">
-      <rect x="0" y="0" width="150" height="58" rx="14" fill="#ffffff" stroke="#4F46E5" stroke-width="3"/>
-      <path d="M30 58 L24 74 L48 58 Z" fill="#ffffff" stroke="#4F46E5" stroke-width="3"/>
-      <circle cx="36" cy="29" r="5" fill="#4F46E5"/>
-      <circle cx="56" cy="29" r="5" fill="#4F46E5"/>
-      <circle cx="76" cy="29" r="5" fill="#4F46E5"/>
-    </g>
-    <!-- AI sparkle badge -->
-    <g transform="translate(480 260)">
-      <circle r="32" fill="#FBBF24"/>
-      <text y="8" text-anchor="middle" font-family="Inter, Segoe UI, system-ui, sans-serif" font-size="22" font-weight="800" fill="#1E293B">AI</text>
+      <rect x="248" width="130" height="36" rx="8" fill="#0F172A" stroke="#1E3A5F" stroke-width="1"/>
+      <text x="313" y="14" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="20" font-weight="800" fill="#FBBF24">ZERO</text>
+      <text x="313" y="28" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="9" fill="#64748B">HUMAN TOUCHES</text>
     </g>
   </g>
 
-  <!-- Tiny corner brand watermark -->
-  <text x="1510" y="870" text-anchor="end" font-family="Inter, Segoe UI, system-ui, sans-serif" font-size="16" font-weight="500" fill="#64748B">vamshi-yadav-golla &#8226; AI Agent Engineer</text>
+  <!-- ======= CENTRE: Flow arrows + AI node ======= -->
+  <!-- Arrow: inbox → AI -->
+  <g transform="translate(490 400)">
+    <rect x="0" y="-3" width="130" height="6" rx="3" fill="url(#glowLine)"/>
+    <polygon points="130,-10 155,0 130,10" fill="#4F46E5"/>
+    <!-- Flow label -->
+    <text x="65" y="-14" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#4F46E5">n8n trigger</text>
+  </g>
+
+  <!-- AI Node (centre circle) -->
+  <g transform="translate(780 390)" filter="url(#glow)">
+    <circle r="78" fill="#4F46E5" opacity="0.15"/>
+    <circle r="62" fill="#4F46E5" opacity="0.25"/>
+    <circle r="48" fill="url(#btnGrad)"/>
+    <!-- AI text -->
+    <text y="8" text-anchor="middle" font-family="'Arial Black', Impact, Inter, sans-serif" font-size="30" font-weight="900" fill="#ffffff">GPT</text>
+    <!-- Small sparkle marks around circle -->
+    <g fill="#ffffff" opacity="0.8">
+      <polygon points="-62,0 -56,-4 -56,4" />
+      <polygon points="62,0 56,-4 56,4" />
+      <polygon points="0,-62 -4,-56 4,-56" />
+      <polygon points="0,62 -4,56 4,56" />
+    </g>
+  </g>
+
+  <!-- Arrow: AI → reply -->
+  <g transform="translate(840 400)">
+    <rect x="0" y="-3" width="130" height="6" rx="3" fill="url(#glowLine)"/>
+    <polygon points="130,-10 155,0 130,10" fill="#7C3AED"/>
+    <text x="65" y="-14" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#7C3AED">auto-reply</text>
+  </g>
+
+  <!-- Vision label above AI node -->
+  <g transform="translate(730 270)">
+    <rect width="104" height="26" rx="13" fill="#F59E0B" opacity="0.9"/>
+    <text x="52" y="18" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#1F2937">GPT-4o Vision</text>
+  </g>
+
+  <!-- ======= RIGHT PANEL: Auto-generated reply ======= -->
+  <g transform="translate(1010 100)" filter="url(#softShadow)">
+    <rect width="528" height="680" rx="16" fill="url(#cardGrad)" stroke="#2D1E6B" stroke-width="1.5"/>
+
+    <!-- Reply header -->
+    <rect width="528" height="52" rx="16" fill="url(#replyGrad)"/>
+    <rect y="36" width="528" height="16" fill="url(#replyGrad)"/>
+    <text x="20" y="34" font-family="Inter, Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#A5B4FC">AI Reply Generated</text>
+    <!-- Green sent badge -->
+    <rect x="350" y="12" width="156" height="28" rx="14" fill="#22C55E"/>
+    <text x="428" y="31" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#ffffff">✓ SENT &lt;60s</text>
+
+    <!-- Reply content -->
+    <g font-family="Inter, Segoe UI, sans-serif">
+      <text x="20" y="82" font-size="13" fill="#64748B">To: james.birch@flightops.co.uk</text>
+      <text x="20" y="100" font-size="13" fill="#64748B">Subject: Re: Custom case for DJI Mavic 3 Pro</text>
+      <rect x="20" y="112" width="488" height="1" fill="#1E3A5F"/>
+
+      <text x="20" y="138" font-size="14" fill="#CBD5E1">Dear James,</text>
+      <text x="20" y="162" font-size="14" fill="#94A3B8">Thank you for reaching out to NSP Cases.</text>
+      <text x="20" y="182" font-size="14" fill="#94A3B8">Based on your attached drawing, I can confirm we</text>
+      <text x="20" y="202" font-size="14" fill="#94A3B8">stock a custom-foam solution for the</text>
+      <text x="20" y="222" font-size="14" fill="#A5B4FC" font-weight="600">DJI Mavic 3 Pro (394 × 360 × 163mm).</text>
+
+      <text x="20" y="258" font-size="14" fill="#94A3B8">Recommended case: </text>
+      <text x="168" y="258" font-size="14" fill="#A5B4FC" font-weight="600">DJI Pro Carry Case XL</text>
+      <text x="20" y="278" font-size="14" fill="#94A3B8">Foam type: </text>
+      <text x="108" y="278" font-size="14" fill="#A5B4FC" font-weight="600">HD Pick-n-Pluck foam (IP67)</text>
+      <text x="20" y="298" font-size="14" fill="#94A3B8">Lead time: </text>
+      <text x="107" y="298" font-size="14" fill="#22C55E" font-weight="600">3–5 working days</text>
+      <text x="20" y="318" font-size="14" fill="#94A3B8">Unit price: </text>
+      <text x="110" y="318" font-size="14" fill="#FBBF24" font-weight="600">£89.00 + VAT</text>
+
+      <rect x="20" y="334" width="488" height="1" fill="#1E3A5F"/>
+
+      <text x="20" y="358" font-size="13" fill="#64748B">I've attached our full product spec sheet.</text>
+      <text x="20" y="378" font-size="13" fill="#64748B">Please feel free to reply with any questions.</text>
+
+      <text x="20" y="414" font-size="14" fill="#CBD5E1">Kind regards,</text>
+      <text x="20" y="434" font-size="14" font-weight="700" fill="#A5B4FC">NSP Cases Customer Relations</text>
+      <text x="20" y="454" font-size="13" fill="#64748B">AI-Assisted · Powered by GPT-4.1-mini</text>
+    </g>
+
+    <!-- Divider -->
+    <rect y="472" width="528" height="1" fill="#1E3A5F"/>
+
+    <!-- Cursor typing animation indicator -->
+    <g transform="translate(20 492)">
+      <circle cx="6" cy="6" r="6" fill="#22C55E"/>
+      <text x="20" y="11" font-family="Inter, Segoe UI, sans-serif" font-size="13" fill="#22C55E" font-weight="600">Sent to James • Marked IMPORTANT • Logged to DB</text>
+    </g>
+
+    <!-- Stack badges bottom -->
+    <g transform="translate(20 540)">
+      <text x="0" y="14" font-family="Inter, Segoe UI, sans-serif" font-size="12" fill="#64748B">Powered by</text>
+      <g fill="none">
+        <rect x="90" width="72" height="24" rx="5" fill="#4F46E5" fill-opacity="0.8"/>
+        <text x="126" y="17" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#fff">n8n</text>
+        <rect x="170" width="110" height="24" rx="5" fill="#7C3AED" fill-opacity="0.8"/>
+        <text x="225" y="17" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#fff">LangChain</text>
+        <rect x="288" width="92" height="24" rx="5" fill="#0EA5E9" fill-opacity="0.8"/>
+        <text x="334" y="17" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#fff">GPT-4.1</text>
+        <rect x="388" width="110" height="24" rx="5" fill="#22C55E" fill-opacity="0.8"/>
+        <text x="443" y="17" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#fff">Supabase</text>
+      </g>
+    </g>
+
+    <!-- WATCH DEMO button -->
+    <g transform="translate(20 590)" filter="url(#softShadow)">
+      <rect width="260" height="62" rx="31" fill="url(#btnGrad)"/>
+      <path d="M36 20 L36 42 L58 31 Z" fill="#ffffff"/>
+      <text x="80" y="38" font-family="Inter, Segoe UI, sans-serif" font-size="20" font-weight="700" fill="#ffffff" letter-spacing="2">WATCH DEMO</text>
+    </g>
+  </g>
+
+  <!-- ======= TITLE BLOCK: top centre ======= -->
+  <g font-family="Inter, Segoe UI, sans-serif" text-anchor="middle">
+    <text x="800" y="56" font-size="22" font-weight="800" fill="#A5B4FC" letter-spacing="6">NSP CASES &#8226; AI EMAIL HANDLER</text>
+    <text x="800" y="80" font-size="14" font-weight="500" fill="#475569">UK Flight Case Manufacturer &#8226; 19-node n8n &#8226; Zero human intervention</text>
+  </g>
+
+  <!-- Bottom brand -->
+  <text x="1540" y="876" text-anchor="end" font-family="Inter, Segoe UI, sans-serif" font-size="14" fill="#334155">vamshi-yadav-golla.github.io/portfolio</text>
 </svg>
