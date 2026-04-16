@@ -1,53 +1,163 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="NSP Cases AI Email Enquiry Handler demo thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="NSP Cases AI Email Handler demo thumbnail">
   <defs>
     <linearGradient id="nspBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EEF4FF"/>
+      <stop offset="1" stop-color="#C7D7F5"/>
+    </linearGradient>
+    <linearGradient id="nspBtn" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4F46E5"/>
+      <stop offset="1" stop-color="#6366F1"/>
+    </linearGradient>
+    <linearGradient id="nspAccent" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#4F46E5"/>
       <stop offset="1" stop-color="#7C3AED"/>
     </linearGradient>
-    <radialGradient id="nspGlow" cx="0.5" cy="0.5" r="0.6">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.18"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
-    </radialGradient>
     <filter id="nspShadow" x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
-      <feOffset dx="0" dy="4" result="offsetblur"/>
-      <feComponentTransfer><feFuncA type="linear" slope="0.35"/></feComponentTransfer>
+      <feOffset dx="0" dy="4" result="o"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.25"/></feComponentTransfer>
       <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
 
+  <!-- Background -->
   <rect width="1600" height="900" fill="url(#nspBg)"/>
-  <rect width="1600" height="900" fill="url(#nspGlow)"/>
 
-  <!-- Subtle grid pattern -->
-  <g stroke="#ffffff" stroke-opacity="0.06" stroke-width="1">
-    <path d="M0 225 H1600 M0 450 H1600 M0 675 H1600"/>
-    <path d="M400 0 V900 M800 0 V900 M1200 0 V900"/>
+  <!-- Decorative leaf-like blobs (right side) -->
+  <g opacity="0.7">
+    <path d="M1300 -20 C 1420 80 1480 220 1430 360 C 1380 500 1240 540 1130 480 C 1030 420 1040 280 1120 180 C 1200 80 1230 -40 1300 -20 Z" fill="#A9C1F0" opacity="0.4"/>
+    <path d="M1500 600 C 1580 680 1600 820 1540 900 L 1100 900 C 1140 820 1240 760 1320 720 C 1400 680 1460 640 1500 600 Z" fill="#9CB5EB" opacity="0.35"/>
   </g>
 
-  <!-- Envelope icon top-left -->
-  <g transform="translate(90 90)" fill="#ffffff" fill-opacity="0.95">
-    <rect x="0" y="8" width="96" height="72" rx="10" fill="none" stroke="#ffffff" stroke-width="5"/>
-    <path d="M6 18 L48 52 L90 18" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Top nav mockup -->
+  <g font-family="Inter, Segoe UI, system-ui, sans-serif">
+    <!-- Logo block -->
+    <rect x="70" y="54" width="44" height="44" rx="8" fill="url(#nspAccent)"/>
+    <rect x="82" y="66" width="20" height="3" rx="1.5" fill="#ffffff"/>
+    <rect x="82" y="74" width="20" height="3" rx="1.5" fill="#ffffff"/>
+    <rect x="82" y="82" width="20" height="3" rx="1.5" fill="#ffffff"/>
+    <text x="130" y="86" font-size="22" font-weight="700" fill="#1E293B" letter-spacing="1">NSP CASES</text>
+    <!-- Nav links -->
+    <g font-size="18" font-weight="500" fill="#334155">
+      <text x="1050" y="82">Home</text>
+      <text x="1160" y="82">Enquiries</text>
+      <text x="1305" y="82">Products</text>
+      <text x="1440" y="82">Contact</text>
+    </g>
+    <!-- Nav underline -->
+    <rect x="70" y="120" width="1460" height="1" fill="#1E293B" opacity="0.08"/>
   </g>
 
-  <!-- Title block -->
-  <g font-family="Inter, Segoe UI, system-ui, sans-serif" fill="#ffffff">
-    <text x="210" y="140" font-size="58" font-weight="700" letter-spacing="-1">AI Email Handler</text>
-    <text x="210" y="190" font-size="30" font-weight="500" fill-opacity="0.82">NSP Cases &#8226; UK Flight Case Manufacturer</text>
+  <!-- LEFT: Copy block -->
+  <g font-family="Inter, Segoe UI, system-ui, sans-serif">
+    <text x="90" y="300" font-size="22" font-weight="600" fill="#4F46E5" letter-spacing="4">AI AGENT &#8226; LIVE</text>
+    <text x="90" y="400" font-size="98" font-weight="800" fill="#0F172A" letter-spacing="-3">AI Email</text>
+    <text x="90" y="490" font-size="98" font-weight="800" fill="#0F172A" letter-spacing="-3">Handler</text>
+    <!-- Accent underline -->
+    <rect x="90" y="515" width="180" height="8" rx="4" fill="url(#nspAccent)"/>
+
+    <text x="90" y="580" font-size="26" font-weight="500" fill="#334155">Autonomous customer-service pipeline</text>
+    <text x="90" y="615" font-size="26" font-weight="500" fill="#334155">Gmail &#8594; AI Agent &#8594; reply in &lt; 60s</text>
+
+    <!-- Watch Demo pill CTA -->
+    <g transform="translate(90 670)" filter="url(#nspShadow)">
+      <rect x="0" y="0" width="320" height="74" rx="37" fill="url(#nspBtn)"/>
+      <path d="M40 23 L40 51 L66 37 Z" fill="#ffffff"/>
+      <text x="90" y="48" font-family="Inter, Segoe UI, system-ui, sans-serif" font-size="24" font-weight="700" fill="#ffffff" letter-spacing="2">WATCH DEMO</text>
+    </g>
+
+    <!-- Dot pagination -->
+    <g transform="translate(90 800)">
+      <circle cx="10" cy="10" r="9" fill="#4F46E5"/>
+      <circle cx="40" cy="10" r="7" fill="#CBD5E1"/>
+      <circle cx="65" cy="10" r="7" fill="#CBD5E1"/>
+    </g>
   </g>
 
-  <!-- Play button centered -->
-  <g transform="translate(800 470)" filter="url(#nspShadow)">
-    <circle r="96" fill="#ffffff"/>
-    <path d="M-28 -44 L54 0 L-28 44 Z" fill="#4F46E5"/>
+  <!-- RIGHT: Flat illustration - person with laptop + envelopes + headset -->
+  <g transform="translate(860 200)">
+    <!-- Desk surface -->
+    <rect x="0" y="540" width="660" height="14" rx="3" fill="#4F46E5" opacity="0.25"/>
+
+    <!-- Chair back -->
+    <rect x="220" y="380" width="180" height="40" rx="20" fill="#4F46E5" opacity="0.35"/>
+
+    <!-- Person body/torso -->
+    <path d="M200 540 C 200 440 240 380 320 380 C 400 380 440 440 440 540 Z" fill="#4F46E5"/>
+    <!-- Shirt accent -->
+    <path d="M280 380 L300 420 L320 440 L340 420 L360 380" stroke="#ffffff" stroke-width="4" fill="none" opacity="0.5"/>
+
+    <!-- Neck -->
+    <rect x="304" y="340" width="32" height="50" fill="#FCD7B6"/>
+
+    <!-- Head -->
+    <circle cx="320" cy="310" r="48" fill="#FCD7B6"/>
+    <!-- Hair -->
+    <path d="M274 300 C 274 260 290 232 320 232 C 354 232 370 260 370 300 C 360 290 340 284 320 284 C 300 284 282 290 274 300 Z" fill="#3B2C1E"/>
+    <!-- Eyes -->
+    <circle cx="306" cy="312" r="3" fill="#1E293B"/>
+    <circle cx="334" cy="312" r="3" fill="#1E293B"/>
+    <!-- Smile -->
+    <path d="M308 330 Q 320 338 332 330" stroke="#1E293B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+    <!-- Headset -->
+    <path d="M270 290 Q 320 230 370 290" stroke="#1E293B" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <rect x="260" y="284" width="18" height="26" rx="5" fill="#1E293B"/>
+    <rect x="362" y="284" width="18" height="26" rx="5" fill="#1E293B"/>
+    <!-- Mic arm -->
+    <path d="M268 310 Q 278 336 300 340" stroke="#1E293B" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <circle cx="302" cy="342" r="6" fill="#EF4444"/>
+
+    <!-- Arms (behind laptop) -->
+    <path d="M220 480 L 180 540" stroke="#4F46E5" stroke-width="32" stroke-linecap="round"/>
+    <path d="M420 480 L 460 540" stroke="#4F46E5" stroke-width="32" stroke-linecap="round"/>
+    <!-- Hands -->
+    <circle cx="178" cy="544" r="14" fill="#FCD7B6"/>
+    <circle cx="462" cy="544" r="14" fill="#FCD7B6"/>
+
+    <!-- Laptop -->
+    <rect x="150" y="500" width="340" height="54" rx="4" fill="#1E293B"/>
+    <rect x="162" y="406" width="316" height="100" rx="6" fill="#1E293B"/>
+    <rect x="172" y="416" width="296" height="80" rx="3" fill="#EEF4FF"/>
+    <!-- Laptop screen content -->
+    <rect x="184" y="428" width="120" height="8" rx="2" fill="#4F46E5"/>
+    <rect x="184" y="442" width="210" height="5" rx="2" fill="#94A3B8"/>
+    <rect x="184" y="452" width="180" height="5" rx="2" fill="#94A3B8"/>
+    <rect x="184" y="462" width="200" height="5" rx="2" fill="#94A3B8"/>
+    <circle cx="444" cy="468" r="18" fill="#22C55E"/>
+    <path d="M436 468 L442 474 L454 460" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Floating envelope 1 (top-left) -->
+    <g transform="translate(40 140) rotate(-12)">
+      <rect x="0" y="0" width="110" height="72" rx="6" fill="#ffffff" stroke="#4F46E5" stroke-width="3"/>
+      <path d="M0 0 L55 40 L110 0" fill="none" stroke="#4F46E5" stroke-width="3"/>
+      <circle cx="55" cy="28" r="6" fill="#EF4444"/>
+    </g>
+    <!-- Floating envelope 2 (top-right) -->
+    <g transform="translate(520 100) rotate(14)">
+      <rect x="0" y="0" width="110" height="72" rx="6" fill="#ffffff" stroke="#4F46E5" stroke-width="3"/>
+      <path d="M0 0 L55 40 L110 0" fill="none" stroke="#4F46E5" stroke-width="3"/>
+    </g>
+    <!-- Floating envelope 3 (middle-right, opened) -->
+    <g transform="translate(560 300) rotate(8)">
+      <rect x="0" y="0" width="90" height="60" rx="5" fill="#4F46E5"/>
+      <path d="M0 0 L45 32 L90 0" fill="none" stroke="#ffffff" stroke-width="3"/>
+    </g>
+    <!-- Chat bubble -->
+    <g transform="translate(-20 300)">
+      <rect x="0" y="0" width="150" height="58" rx="14" fill="#ffffff" stroke="#4F46E5" stroke-width="3"/>
+      <path d="M30 58 L24 74 L48 58 Z" fill="#ffffff" stroke="#4F46E5" stroke-width="3"/>
+      <circle cx="36" cy="29" r="5" fill="#4F46E5"/>
+      <circle cx="56" cy="29" r="5" fill="#4F46E5"/>
+      <circle cx="76" cy="29" r="5" fill="#4F46E5"/>
+    </g>
+    <!-- AI sparkle badge -->
+    <g transform="translate(480 260)">
+      <circle r="32" fill="#FBBF24"/>
+      <text y="8" text-anchor="middle" font-family="Inter, Segoe UI, system-ui, sans-serif" font-size="22" font-weight="800" fill="#1E293B">AI</text>
+    </g>
   </g>
 
-  <!-- Bottom metric strip -->
-  <g font-family="Inter, Segoe UI, system-ui, sans-serif" fill="#ffffff">
-    <text x="90" y="820" font-size="36" font-weight="600" fill-opacity="0.95">&lt; 60s response</text>
-    <text x="520" y="820" font-size="36" font-weight="600" fill-opacity="0.5">&#8226;</text>
-    <text x="560" y="820" font-size="36" font-weight="600" fill-opacity="0.95">19-node n8n workflow</text>
-    <text x="1510" y="820" font-size="36" font-weight="600" fill-opacity="0.95" text-anchor="end">GPT-4o Vision</text>
-  </g>
+  <!-- Tiny corner brand watermark -->
+  <text x="1510" y="870" text-anchor="end" font-family="Inter, Segoe UI, system-ui, sans-serif" font-size="16" font-weight="500" fill="#64748B">vamshi-yadav-golla &#8226; AI Agent Engineer</text>
 </svg>

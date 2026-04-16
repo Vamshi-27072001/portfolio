@@ -1,58 +1,172 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="LinkedIn Post Manager AI Content Engine demo thumbnail - coming soon">
   <defs>
     <linearGradient id="liBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E8F1FB"/>
+      <stop offset="1" stop-color="#B7D0EE"/>
+    </linearGradient>
+    <linearGradient id="liBtn" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0A66C2"/>
+      <stop offset="1" stop-color="#1E88E5"/>
+    </linearGradient>
+    <linearGradient id="liAccent" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#0A66C2"/>
       <stop offset="1" stop-color="#1E3A8A"/>
     </linearGradient>
-    <radialGradient id="liGlow" cx="0.5" cy="0.5" r="0.6">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.18"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
-    </radialGradient>
     <filter id="liShadow" x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
-      <feOffset dx="0" dy="4" result="offsetblur"/>
-      <feComponentTransfer><feFuncA type="linear" slope="0.35"/></feComponentTransfer>
+      <feOffset dx="0" dy="4" result="o"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.25"/></feComponentTransfer>
       <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
 
+  <!-- Background -->
   <rect width="1600" height="900" fill="url(#liBg)"/>
-  <rect width="1600" height="900" fill="url(#liGlow)"/>
 
-  <!-- Subtle grid -->
-  <g stroke="#ffffff" stroke-opacity="0.06" stroke-width="1">
-    <path d="M0 225 H1600 M0 450 H1600 M0 675 H1600"/>
-    <path d="M400 0 V900 M800 0 V900 M1200 0 V900"/>
+  <!-- Decorative blobs -->
+  <g opacity="0.7">
+    <path d="M1300 -20 C 1420 80 1480 220 1430 360 C 1380 500 1240 540 1130 480 C 1030 420 1040 280 1120 180 C 1200 80 1230 -40 1300 -20 Z" fill="#8EB3DC" opacity="0.45"/>
+    <path d="M1500 600 C 1580 680 1600 820 1540 900 L 1100 900 C 1140 820 1240 760 1320 720 C 1400 680 1460 640 1500 600 Z" fill="#7AA4D3" opacity="0.4"/>
   </g>
 
-  <!-- Link / chain icon top-left -->
-  <g transform="translate(90 90)" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M14 48 a22 22 0 0 1 22 -22 h18 a22 22 0 0 1 0 44 h-10"/>
-    <path d="M82 48 a22 22 0 0 1 -22 22 h-18 a22 22 0 0 1 0 -44 h10"/>
+  <!-- Top nav mockup -->
+  <g font-family="Inter, Segoe UI, system-ui, sans-serif">
+    <rect x="70" y="54" width="44" height="44" rx="8" fill="url(#liAccent)"/>
+    <text x="82" y="85" font-size="26" font-weight="800" fill="#ffffff" font-family="'Arial Black', Impact, Inter, sans-serif">in</text>
+    <text x="130" y="86" font-size="22" font-weight="700" fill="#1E293B" letter-spacing="1">POST MANAGER</text>
+    <g font-size="18" font-weight="500" fill="#334155">
+      <text x="1050" y="82">Feed</text>
+      <text x="1140" y="82">Posts</text>
+      <text x="1240" y="82">Network</text>
+      <text x="1380" y="82">Analytics</text>
+    </g>
+    <rect x="70" y="120" width="1460" height="1" fill="#1E293B" opacity="0.08"/>
   </g>
 
-  <!-- Title block -->
-  <g font-family="Inter, Segoe UI, system-ui, sans-serif" fill="#ffffff">
-    <text x="210" y="140" font-size="58" font-weight="700" letter-spacing="-1">LinkedIn Post Manager</text>
-    <text x="210" y="190" font-size="30" font-weight="500" fill-opacity="0.88">Telegram &#8594; LinkedIn &#8226; AI Content Engine</text>
+  <!-- LEFT: Copy block -->
+  <g font-family="Inter, Segoe UI, system-ui, sans-serif">
+    <text x="90" y="300" font-size="22" font-weight="600" fill="#0A66C2" letter-spacing="4">AI CONTENT &#8226; ENGINE</text>
+    <text x="90" y="400" font-size="98" font-weight="800" fill="#0F172A" letter-spacing="-3">AI Content</text>
+    <text x="90" y="490" font-size="98" font-weight="800" fill="#0F172A" letter-spacing="-3">Engine</text>
+    <rect x="90" y="515" width="180" height="8" rx="4" fill="url(#liAccent)"/>
+
+    <text x="90" y="580" font-size="26" font-weight="500" fill="#334155">Telegram &#8594; LinkedIn publishing</text>
+    <text x="90" y="615" font-size="26" font-weight="500" fill="#334155">98% time saved &#8226; &#163;24K/yr saved</text>
+
+    <!-- Coming Soon pill -->
+    <g transform="translate(90 670)" filter="url(#liShadow)">
+      <rect x="0" y="0" width="360" height="74" rx="37" fill="#1E293B"/>
+      <circle cx="40" cy="37" r="10" fill="#F59E0B">
+        <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <text x="74" y="48" font-size="24" font-weight="800" fill="#ffffff" letter-spacing="3">COMING SOON</text>
+    </g>
+
+    <!-- Dot pagination -->
+    <g transform="translate(90 800)">
+      <circle cx="10" cy="10" r="7" fill="#CBD5E1"/>
+      <circle cx="40" cy="10" r="9" fill="#0A66C2"/>
+      <circle cx="70" cy="10" r="7" fill="#CBD5E1"/>
+    </g>
   </g>
 
-  <!-- Coming Soon pill centered -->
-  <g transform="translate(800 470)" filter="url(#liShadow)">
-    <rect x="-230" y="-70" width="460" height="140" rx="70" fill="#ffffff"/>
-    <text x="0" y="18" font-family="Inter, Segoe UI, system-ui, sans-serif" font-size="56" font-weight="700" fill="#0A66C2" text-anchor="middle" letter-spacing="4">COMING SOON</text>
+  <!-- RIGHT: Flat illustration — person publishing to LinkedIn -->
+  <g transform="translate(860 200)">
+    <!-- Desk surface -->
+    <rect x="0" y="540" width="660" height="14" rx="3" fill="#0A66C2" opacity="0.25"/>
+
+    <!-- Chair back -->
+    <rect x="220" y="380" width="180" height="40" rx="20" fill="#0A66C2" opacity="0.35"/>
+
+    <!-- Person torso -->
+    <path d="M200 540 C 200 440 240 380 320 380 C 400 380 440 440 440 540 Z" fill="#0A66C2"/>
+    <path d="M280 380 L320 440 L360 380" stroke="#ffffff" stroke-width="4" fill="none" opacity="0.5"/>
+
+    <!-- Neck -->
+    <rect x="304" y="340" width="32" height="50" fill="#FCD7B6"/>
+    <!-- Head -->
+    <circle cx="320" cy="310" r="48" fill="#FCD7B6"/>
+    <!-- Hair -->
+    <path d="M274 304 C 274 260 294 232 324 232 C 354 232 370 256 370 296 C 360 292 342 286 320 286 C 302 286 286 294 274 304 Z" fill="#4B2E1A"/>
+    <!-- Eyes -->
+    <circle cx="306" cy="312" r="3" fill="#1E293B"/>
+    <circle cx="334" cy="312" r="3" fill="#1E293B"/>
+    <!-- Smile -->
+    <path d="M308 330 Q 320 338 332 330" stroke="#1E293B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+    <!-- Arms -->
+    <path d="M220 480 L 180 540" stroke="#0A66C2" stroke-width="32" stroke-linecap="round"/>
+    <path d="M420 480 L 460 540" stroke="#0A66C2" stroke-width="32" stroke-linecap="round"/>
+    <circle cx="178" cy="544" r="14" fill="#FCD7B6"/>
+    <circle cx="462" cy="544" r="14" fill="#FCD7B6"/>
+
+    <!-- Laptop -->
+    <rect x="150" y="500" width="340" height="54" rx="4" fill="#1E293B"/>
+    <rect x="162" y="406" width="316" height="100" rx="6" fill="#1E293B"/>
+    <rect x="172" y="416" width="296" height="80" rx="3" fill="#ffffff"/>
+    <!-- LinkedIn post preview on laptop -->
+    <rect x="180" y="424" width="22" height="22" rx="11" fill="#0A66C2"/>
+    <text x="185" y="441" font-family="'Arial Black', Impact, Inter, sans-serif" font-size="14" font-weight="800" fill="#ffffff">in</text>
+    <rect x="210" y="426" width="90" height="6" rx="2" fill="#1E293B"/>
+    <rect x="210" y="436" width="60" height="4" rx="2" fill="#94A3B8"/>
+    <rect x="180" y="456" width="290" height="4" rx="2" fill="#64748B"/>
+    <rect x="180" y="466" width="260" height="4" rx="2" fill="#64748B"/>
+    <rect x="180" y="476" width="220" height="4" rx="2" fill="#64748B"/>
+    <!-- Like / comment row -->
+    <g transform="translate(180 486)">
+      <circle cx="4" cy="4" r="4" fill="#0A66C2"/>
+      <circle cx="12" cy="4" r="4" fill="#F59E0B"/>
+      <rect x="22" y="1" width="24" height="6" rx="2" fill="#94A3B8"/>
+    </g>
+
+    <!-- Floating post card 1 -->
+    <g transform="translate(40 140) rotate(-10)" filter="url(#liShadow)">
+      <rect x="0" y="0" width="140" height="100" rx="10" fill="#ffffff"/>
+      <rect x="10" y="10" width="40" height="8" rx="2" fill="#0A66C2"/>
+      <rect x="10" y="24" width="120" height="4" rx="2" fill="#94A3B8"/>
+      <rect x="10" y="34" width="100" height="4" rx="2" fill="#94A3B8"/>
+      <rect x="10" y="44" width="110" height="4" rx="2" fill="#94A3B8"/>
+      <g transform="translate(10 68)">
+        <circle cx="6" cy="6" r="6" fill="#0A66C2"/>
+        <text x="16" y="10" font-size="10" font-weight="600" fill="#0A66C2">Like</text>
+        <circle cx="52" cy="6" r="6" fill="#F59E0B"/>
+        <text x="62" y="10" font-size="10" font-weight="600" fill="#F59E0B">Share</text>
+      </g>
+    </g>
+
+    <!-- Floating post card 2 -->
+    <g transform="translate(520 120) rotate(12)" filter="url(#liShadow)">
+      <rect x="0" y="0" width="130" height="90" rx="10" fill="#0A66C2"/>
+      <rect x="10" y="10" width="34" height="6" rx="2" fill="#ffffff"/>
+      <rect x="10" y="22" width="110" height="3" rx="2" fill="#ffffff" opacity="0.75"/>
+      <rect x="10" y="30" width="90" height="3" rx="2" fill="#ffffff" opacity="0.75"/>
+      <rect x="10" y="38" width="100" height="3" rx="2" fill="#ffffff" opacity="0.75"/>
+      <rect x="10" y="46" width="70" height="3" rx="2" fill="#ffffff" opacity="0.75"/>
+      <text x="10" y="76" font-size="10" font-weight="700" fill="#ffffff">#AI #n8n #Automation</text>
+    </g>
+
+    <!-- Paper plane / send icon -->
+    <g transform="translate(560 320) rotate(-20)">
+      <path d="M0 30 L60 0 L50 30 L60 60 Z" fill="#0A66C2"/>
+      <path d="M50 30 L0 30" stroke="#ffffff" stroke-width="2"/>
+    </g>
+
+    <!-- AI sparkle badge -->
+    <g transform="translate(-20 320)">
+      <circle r="32" fill="#F59E0B"/>
+      <text y="8" text-anchor="middle" font-family="Inter, Segoe UI, system-ui, sans-serif" font-size="22" font-weight="800" fill="#1E293B">AI</text>
+    </g>
+
+    <!-- Telegram bubble (top-right of illustration) -->
+    <g transform="translate(420 40)">
+      <circle r="34" fill="#229ED9"/>
+      <path d="M-16 -2 L 16 -16 L 10 16 L 0 4 L -6 10 Z" fill="#ffffff"/>
+    </g>
+    <!-- Arrow Telegram -> Laptop -->
+    <path d="M420 90 Q 440 180 380 240" stroke="#0A66C2" stroke-width="4" stroke-dasharray="6 8" fill="none"/>
+    <polygon points="374,238 392,236 384,250" fill="#0A66C2"/>
   </g>
 
-  <!-- Small helper under pill -->
-  <g font-family="Inter, Segoe UI, system-ui, sans-serif" fill="#ffffff">
-    <text x="800" y="610" font-size="26" font-weight="500" fill-opacity="0.75" text-anchor="middle">Demo video recording in progress</text>
-  </g>
-
-  <!-- Bottom metric strip -->
-  <g font-family="Inter, Segoe UI, system-ui, sans-serif" fill="#ffffff">
-    <text x="90" y="820" font-size="36" font-weight="600">98% time &#8595;</text>
-    <text x="380" y="820" font-size="36" font-weight="600" fill-opacity="0.5">&#8226;</text>
-    <text x="420" y="820" font-size="36" font-weight="600">&#163;24K/yr saved</text>
-    <text x="1510" y="820" font-size="36" font-weight="600" text-anchor="end">13-node pipeline</text>
-  </g>
+  <!-- Tiny corner brand watermark -->
+  <text x="1510" y="870" text-anchor="end" font-family="Inter, Segoe UI, system-ui, sans-serif" font-size="16" font-weight="500" fill="#64748B">vamshi-yadav-golla &#8226; AI Agent Engineer</text>
 </svg>
