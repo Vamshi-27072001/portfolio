@@ -164,6 +164,28 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
+/* ---- CLICK-TO-PLAY VIDEO THUMBNAIL ---- */
+/* On first click, swap the static SVG thumbnail for the Drive iframe (autoplay). */
+function activateVideoThumb(thumb) {
+  const src = thumb.getAttribute('data-src');
+  if (!src) return;
+  const title = thumb.getAttribute('data-title') || 'Demo video';
+  const wrapper = document.createElement('div');
+  wrapper.className = 'video-embed';
+  wrapper.id = thumb.id;
+  wrapper.innerHTML = `<iframe src="${src}" title="${title.replace(/"/g, '&quot;')}" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>`;
+  thumb.replaceWith(wrapper);
+}
+document.querySelectorAll('.video-thumb[data-src]').forEach((thumb) => {
+  thumb.addEventListener('click', () => activateVideoThumb(thumb));
+  thumb.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      activateVideoThumb(thumb);
+    }
+  });
+});
+
 /* ---- HIRE-ME FLOATING WIDGET ---- */
 const hireWidget = document.getElementById('hireWidget');
 const hireToggle = document.getElementById('hireWidgetToggle');

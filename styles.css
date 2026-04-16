@@ -351,14 +351,18 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .project-action-link i{color:var(--accent);font-size:1.1rem}
 .project-action-link:hover{border-color:var(--accent);background:var(--accent-glow);color:var(--accent)}
 
-/* Video Placeholder */
-.video-placeholder{border:2px dashed var(--border);border-radius:var(--r-md);padding:28px 16px;text-align:center;color:var(--text-muted);transition:all var(--transition)}
-.video-placeholder:hover{border-color:var(--accent);background:var(--accent-glow)}
-.video-placeholder i{font-size:2rem;color:var(--accent);opacity:.5;display:block;margin-bottom:6px}
-.video-placeholder span{font-size:.85rem;font-weight:600;display:block}
-.video-placeholder p{font-size:.72rem;margin-top:4px}
+/* Click-to-play video thumbnail (lite embed) */
+.video-thumb{position:relative;width:100%;aspect-ratio:16/9;border-radius:var(--r-md);overflow:hidden;background:#0f172a;border:1px solid var(--border);box-shadow:0 4px 20px rgba(15,23,42,.08);margin-top:8px;cursor:pointer;transition:transform var(--transition),box-shadow var(--transition)}
+.video-thumb[aria-label*="coming soon" i],.video-thumb--soon{cursor:default}
+.video-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;border:0}
+.video-thumb:hover:not(.video-thumb--soon){transform:translateY(-2px);box-shadow:0 10px 28px rgba(79,70,229,.22)}
+.video-thumb:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.video-thumb-play{position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:rgba(255,255,255,.96);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(0,0,0,.35);transition:transform var(--transition),background var(--transition);pointer-events:none}
+.video-thumb-play i{font-size:2rem;color:#111;margin-left:4px;line-height:1}
+.video-thumb:hover .video-thumb-play{transform:scale(1.08);background:#fff}
+.video-thumb--soon .video-thumb-play{display:none}
 
-/* Embedded demo video (iframe wrapper with 16:9 aspect ratio) */
+/* Iframe wrapper (used after click-to-play swap) */
 .video-embed{position:relative;width:100%;aspect-ratio:16/9;border-radius:var(--r-md);overflow:hidden;background:#000;border:1px solid var(--border);box-shadow:0 4px 20px rgba(15,23,42,.08);margin-top:8px}
 .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
 
