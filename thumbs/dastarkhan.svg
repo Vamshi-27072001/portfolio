@@ -1,0 +1,260 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#052e16"/>
+      <stop offset="50%" stop-color="#064E3B"/>
+      <stop offset="100%" stop-color="#0a3d28"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#F5CC5A"/>
+    </linearGradient>
+    <linearGradient id="browser-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.10)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.03)"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="14" flood-color="rgba(0,0,0,0.5)"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <!-- Decorative radial glow top-right -->
+  <circle cx="1420" cy="80" r="340" fill="rgba(212,175,55,0.05)"/>
+  <circle cx="1420" cy="80" r="200" fill="rgba(212,175,55,0.04)"/>
+
+  <!-- Decorative radial glow bottom-left -->
+  <circle cx="160" cy="820" r="280" fill="rgba(212,175,55,0.04)"/>
+
+  <!-- Subtle diagonal lines -->
+  <line x1="0" y1="680" x2="460" y2="900" stroke="rgba(212,175,55,0.08)" stroke-width="1.5"/>
+  <line x1="1140" y1="0" x2="1600" y2="260" stroke="rgba(212,175,55,0.08)" stroke-width="1.5"/>
+  <line x1="0" y1="740" x2="380" y2="900" stroke="rgba(212,175,55,0.05)" stroke-width="1"/>
+
+  <!-- ===== LEFT PANEL ===== -->
+
+  <!-- TOP BADGES -->
+  <rect x="72" y="58" width="228" height="34" rx="17" fill="rgba(212,175,55,0.12)" stroke="rgba(212,175,55,0.45)" stroke-width="1.5"/>
+  <text x="186" y="80" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="700" fill="#D4AF37" letter-spacing="2">FULL-STACK WEB DEV</text>
+
+  <rect x="314" y="58" width="176" height="34" rx="17" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.14)" stroke-width="1.5"/>
+  <text x="402" y="80" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="500" fill="rgba(255,255,255,0.65)" letter-spacing="1.5">PERSONAL PROJECT</text>
+
+  <!-- Ornamental divider -->
+  <line x1="72" y1="122" x2="780" y2="122" stroke="rgba(212,175,55,0.22)" stroke-width="1"/>
+  <circle cx="426" cy="122" r="3" fill="#D4AF37" opacity="0.45"/>
+
+  <!-- Main brand title -->
+  <text x="72" y="240" font-family="Georgia,serif" font-size="90" font-weight="700" fill="url(#gold)" filter="url(#glow)" letter-spacing="2">DASTARKHAN</text>
+
+  <!-- Subtitle -->
+  <text x="72" y="296" font-family="Inter,sans-serif" font-size="22" font-weight="300" fill="rgba(255,255,255,0.70)" letter-spacing="7">HYDERABADI ELEGANCE</text>
+
+  <!-- Gold underbar -->
+  <rect x="72" y="318" width="130" height="4" rx="2" fill="url(#gold)"/>
+  <rect x="212" y="320" width="48" height="2" rx="1" fill="rgba(212,175,55,0.38)"/>
+
+  <!-- Description line -->
+  <text x="72" y="364" font-family="Inter,sans-serif" font-size="16" fill="rgba(255,255,255,0.48)">Type-safe pnpm monorepo · React 19 · TypeScript · PostgreSQL</text>
+
+  <!-- ===== METRIC CARDS ===== -->
+  <!-- Card 1 -->
+  <rect x="72" y="404" width="168" height="86" rx="14" fill="rgba(212,175,55,0.07)" stroke="rgba(212,175,55,0.22)" stroke-width="1.5"/>
+  <text x="156" y="450" text-anchor="middle" font-family="Inter,sans-serif" font-size="34" font-weight="800" fill="#D4AF37">9+</text>
+  <text x="156" y="472" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.55)">UI Sections Built</text>
+
+  <!-- Card 2 -->
+  <rect x="252" y="404" width="168" height="86" rx="14" fill="rgba(212,175,55,0.07)" stroke="rgba(212,175,55,0.22)" stroke-width="1.5"/>
+  <text x="336" y="450" text-anchor="middle" font-family="Inter,sans-serif" font-size="34" font-weight="800" fill="#D4AF37">~60%</text>
+  <text x="336" y="472" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.55)">Dev Time Saved</text>
+
+  <!-- Card 3 -->
+  <rect x="432" y="404" width="168" height="86" rx="14" fill="rgba(212,175,55,0.07)" stroke="rgba(212,175,55,0.22)" stroke-width="1.5"/>
+  <text x="516" y="450" text-anchor="middle" font-family="Inter,sans-serif" font-size="34" font-weight="800" fill="#D4AF37">Zero</text>
+  <text x="516" y="472" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.55)">Invalid Submissions</text>
+
+  <!-- Card 4 -->
+  <rect x="612" y="404" width="168" height="86" rx="14" fill="rgba(212,175,55,0.07)" stroke="rgba(212,175,55,0.22)" stroke-width="1.5"/>
+  <text x="696" y="446" text-anchor="middle" font-family="Inter,sans-serif" font-size="28" font-weight="800" fill="#D4AF37">&lt;200KB</text>
+  <text x="696" y="468" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.55)">Gzipped Bundle</text>
+
+  <!-- ===== TECH STACK PILLS ===== -->
+  <text x="72" y="526" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="rgba(255,255,255,0.35)" letter-spacing="3">TECH STACK</text>
+
+  <!-- Row 1 pills -->
+  <rect x="72"  y="540" width="90"  height="26" rx="13" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+  <text x="117" y="557" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.72)">React 19</text>
+
+  <rect x="172" y="540" width="108" height="26" rx="13" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+  <text x="226" y="557" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.72)">TypeScript 5</text>
+
+  <rect x="290" y="540" width="106" height="26" rx="13" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+  <text x="343" y="557" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.72)">Express.js 5</text>
+
+  <rect x="406" y="540" width="100" height="26" rx="13" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+  <text x="456" y="557" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.72)">PostgreSQL</text>
+
+  <rect x="516" y="540" width="102" height="26" rx="13" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+  <text x="567" y="557" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.72)">Drizzle ORM</text>
+
+  <rect x="628" y="540" width="124" height="26" rx="13" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+  <text x="690" y="557" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.72)">Tailwind CSS</text>
+
+  <!-- Row 2 pills -->
+  <rect x="72"  y="578" width="132" height="26" rx="13" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+  <text x="138" y="595" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.72)">Framer Motion</text>
+
+  <rect x="214" y="578" width="126" height="26" rx="13" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+  <text x="277" y="595" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.72)">pnpm Monorepo</text>
+
+  <rect x="350" y="578" width="82"  height="26" rx="13" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+  <text x="391" y="595" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.72)">Radix UI</text>
+
+  <rect x="442" y="578" width="90"  height="26" rx="13" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+  <text x="487" y="595" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.72)">shadcn/ui</text>
+
+  <rect x="542" y="578" width="56"  height="26" rx="13" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+  <text x="570" y="595" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.72)">Vite</text>
+
+  <rect x="608" y="578" width="50"  height="26" rx="13" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+  <text x="633" y="595" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.72)">Zod</text>
+
+  <rect x="668" y="578" width="90"  height="26" rx="13" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+  <text x="713" y="595" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.72)">TanStack Q</text>
+
+  <!-- GitHub CTA button -->
+  <rect x="72" y="644" width="214" height="48" rx="24" fill="rgba(212,175,55,0.10)" stroke="rgba(212,175,55,0.55)" stroke-width="2"/>
+  <text x="179" y="673" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#D4AF37">⌥  View on GitHub</text>
+
+  <!-- ===== RIGHT PANEL — Browser Mockup ===== -->
+  <rect x="820" y="48" width="712" height="810" rx="18" fill="url(#browser-grad)" stroke="rgba(255,255,255,0.10)" stroke-width="1.5" filter="url(#card-shadow)"/>
+
+  <!-- Browser chrome bar -->
+  <rect x="820" y="48" width="712" height="50" rx="18" fill="rgba(255,255,255,0.09)"/>
+  <rect x="820" y="72" width="712" height="26" fill="rgba(255,255,255,0.09)"/>
+
+  <!-- Traffic lights -->
+  <circle cx="858" cy="73" r="7" fill="#FF5F57"/>
+  <circle cx="884" cy="73" r="7" fill="#FFBD2E"/>
+  <circle cx="910" cy="73" r="7" fill="#28C840"/>
+
+  <!-- URL bar -->
+  <rect x="930" y="61" width="474" height="24" rx="12" fill="rgba(0,0,0,0.32)"/>
+  <text x="1167" y="77" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.45)">dastarkhan.vercel.app</text>
+
+  <!-- Website Nav -->
+  <rect x="820" y="98" width="712" height="50" fill="rgba(5,46,22,0.95)"/>
+  <text x="856" y="129" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#D4AF37">DASTARKHAN</text>
+  <text x="1028" y="129" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.65)">Menu</text>
+  <text x="1080" y="129" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.65)">Reserve</text>
+  <text x="1148" y="129" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.65)">About</text>
+  <text x="1208" y="129" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.65)">Chef</text>
+  <rect x="1440" y="114" width="70" height="22" rx="11" fill="#D4AF37"/>
+  <text x="1475" y="129" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#052e16">BOOK</text>
+
+  <!-- Hero Section -->
+  <rect x="820" y="148" width="712" height="244" fill="rgba(5,46,22,0.80)"/>
+  <!-- Hero decorative dot pattern -->
+  <circle cx="870"  cy="180" r="1.8" fill="rgba(212,175,55,0.30)"/>
+  <circle cx="920"  cy="210" r="1.4" fill="rgba(212,175,55,0.20)"/>
+  <circle cx="1490" cy="185" r="1.8" fill="rgba(212,175,55,0.30)"/>
+  <circle cx="1510" cy="360" r="1.4" fill="rgba(212,175,55,0.20)"/>
+
+  <!-- Hero text -->
+  <text x="860" y="200" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="rgba(212,175,55,0.85)" letter-spacing="3">AUTHENTIC HYDERABADI CUISINE</text>
+  <text x="860" y="236" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#FFFFFF">A Feast for</text>
+  <text x="860" y="268" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#D4AF37">the Senses</text>
+  <text x="860" y="302" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.58)">Experience the royal flavours of Hyderabad,</text>
+  <text x="860" y="318" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.58)">crafted with tradition and passion.</text>
+
+  <!-- Hero CTA buttons -->
+  <rect x="860" y="334" width="108" height="28" rx="14" fill="#D4AF37"/>
+  <text x="914" y="352" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#052e16">View Menu</text>
+  <rect x="978" y="334" width="120" height="28" rx="14" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
+  <text x="1038" y="352" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.78)">Reserve Table</text>
+
+  <!-- Menu Cards Section -->
+  <rect x="820" y="392" width="712" height="168" fill="rgba(0,0,0,0.22)"/>
+  <text x="860" y="418" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="rgba(212,175,55,0.80)" letter-spacing="2.5">SIGNATURE DISHES</text>
+
+  <!-- Dish card 1 -->
+  <rect x="850" y="428" width="196" height="112" rx="10" fill="rgba(6,78,59,0.85)" stroke="rgba(212,175,55,0.22)" stroke-width="1"/>
+  <rect x="850" y="428" width="196" height="38" rx="10" fill="rgba(212,175,55,0.14)"/>
+  <rect x="850" y="452" width="196" height="14" fill="rgba(212,175,55,0.14)"/>
+  <text x="948" y="451" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="700" fill="#D4AF37">Biryani Royal</text>
+  <text x="948" y="480" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.58)">Aromatic basmati · Saffron</text>
+  <rect x="864" y="498" width="28" height="14" rx="7" fill="rgba(34,197,94,0.18)"/>
+  <text x="878" y="509" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#22C55E">GF</text>
+  <rect x="898" y="498" width="36" height="14" rx="7" fill="rgba(212,175,55,0.18)"/>
+  <text x="916" y="509" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#D4AF37">Halal</text>
+  <rect x="940" y="498" width="30" height="14" rx="7" fill="rgba(99,102,241,0.18)"/>
+  <text x="955" y="509" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#818cf8">Veg</text>
+
+  <!-- Dish card 2 -->
+  <rect x="1058" y="428" width="196" height="112" rx="10" fill="rgba(6,78,59,0.85)" stroke="rgba(212,175,55,0.22)" stroke-width="1"/>
+  <rect x="1058" y="428" width="196" height="38" rx="10" fill="rgba(212,175,55,0.14)"/>
+  <rect x="1058" y="452" width="196" height="14" fill="rgba(212,175,55,0.14)"/>
+  <text x="1156" y="451" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="700" fill="#D4AF37">Haleem Special</text>
+  <text x="1156" y="480" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.58)">Slow-cooked · Wheat blend</text>
+  <rect x="1072" y="498" width="36" height="14" rx="7" fill="rgba(212,175,55,0.18)"/>
+  <text x="1090" y="509" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#D4AF37">Halal</text>
+
+  <!-- Dish card 3 -->
+  <rect x="1266" y="428" width="196" height="112" rx="10" fill="rgba(6,78,59,0.85)" stroke="rgba(212,175,55,0.22)" stroke-width="1"/>
+  <rect x="1266" y="428" width="196" height="38" rx="10" fill="rgba(212,175,55,0.14)"/>
+  <rect x="1266" y="452" width="196" height="14" fill="rgba(212,175,55,0.14)"/>
+  <text x="1364" y="451" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="700" fill="#D4AF37">Nihari Gosht</text>
+  <text x="1364" y="480" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.58)">Overnight braised · Spices</text>
+  <rect x="1280" y="498" width="36" height="14" rx="7" fill="rgba(212,175,55,0.18)"/>
+  <text x="1298" y="509" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#D4AF37">Halal</text>
+
+  <!-- Reservation Form Section -->
+  <rect x="820" y="560" width="712" height="148" fill="rgba(0,0,0,0.18)"/>
+  <text x="860" y="588" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="rgba(212,175,55,0.80)" letter-spacing="2.5">RESERVE YOUR TABLE</text>
+  <!-- Form fields -->
+  <rect x="850" y="600" width="200" height="28" rx="8" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+  <text x="862" y="618" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.32)">Your name</text>
+  <rect x="1060" y="600" width="158" height="28" rx="8" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+  <text x="1072" y="618" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.32)">Date &amp; time</text>
+  <rect x="1228" y="600" width="98"  height="28" rx="8" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+  <text x="1240" y="618" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.32)">Guests</text>
+
+  <!-- Book button -->
+  <rect x="850" y="642" width="138" height="30" rx="15" fill="#D4AF37"/>
+  <text x="919" y="661" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#052e16">Book My Table</text>
+
+  <!-- WCAG badge -->
+  <rect x="1358" y="642" width="144" height="30" rx="8" fill="rgba(34,197,94,0.10)" stroke="rgba(34,197,94,0.30)" stroke-width="1"/>
+  <text x="1430" y="661" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="500" fill="#22C55E">✓ WCAG Compliant</text>
+
+  <!-- Performance footer row inside browser -->
+  <rect x="820" y="708" width="712" height="50" fill="rgba(212,175,55,0.05)" stroke="rgba(212,175,55,0.10)" stroke-width="0"/>
+  <circle cx="852" cy="733" r="5" fill="rgba(212,175,55,0.55)">
+    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <text x="870" y="737" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.45)">Framer Motion animations · sub-second HMR · Vite esbuild</text>
+  <rect x="1330" y="718" width="152" height="26" rx="8" fill="rgba(34,197,94,0.10)" stroke="rgba(34,197,94,0.28)" stroke-width="1"/>
+  <text x="1406" y="735" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#22C55E">⚡ &lt;200KB gzipped</text>
+
+  <!-- Testimonials strip -->
+  <rect x="820" y="758" width="712" height="70" fill="rgba(5,46,22,0.60)"/>
+  <text x="860" y="782" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="rgba(212,175,55,0.75)" letter-spacing="2">TESTIMONIALS</text>
+  <!-- Stars -->
+  <text x="860" y="808" font-family="Inter,sans-serif" font-size="14" fill="#D4AF37">★★★★★</text>
+  <text x="940" y="808" font-family="Inter,sans-serif" font-size="10" fill="rgba(255,255,255,0.50)">"The best Hyderabadi dining experience in the city..."</text>
+
+  <!-- Footer bar inside browser -->
+  <rect x="820" y="828" width="712" height="30" fill="rgba(0,0,0,0.30)"/>
+  <text x="860" y="847" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.28)" letter-spacing="1.5">© 2026 DASTARKHAN · HYDERABADI ELEGANCE</text>
+
+  <!-- Bottom bar of thumbnail -->
+  <rect x="0" y="858" width="1600" height="42" fill="rgba(0,0,0,0.35)"/>
+  <text x="72" y="883" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.28)" letter-spacing="2">PERSONAL PROJECT · APR 2026 · VAMSHI YADAV GOLLA</text>
+  <text x="1528" y="883" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="rgba(255,255,255,0.28)" letter-spacing="1">FULL-STACK</text>
+</svg>
