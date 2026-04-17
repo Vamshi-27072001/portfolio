@@ -811,9 +811,6 @@ ul { list-style: none; }
 .analytics-thumb { background: linear-gradient(135deg, rgba(79,142,247,0.12) 0%, rgba(10,10,24,0.8) 100%); }
 .ai-thumb        { background: linear-gradient(135deg, rgba(212,175,55,0.12) 0%, rgba(10,10,24,0.8) 100%); }
 .web-thumb       { background: linear-gradient(135deg, rgba(79,142,247,0.08) 0%, rgba(212,175,55,0.06) 100%); }
-.port-thumb-img  { background: #0D0A00; padding: 0; }
-.port-thumb-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top left; display:block; }
-
 .port-thumb-inner {
   display: flex;
   flex-direction: column;
