@@ -186,6 +186,43 @@ document.querySelectorAll('.video-thumb[data-src]').forEach((thumb) => {
   });
 });
 
+/* ---- AUTO-PLAY ON SCROLL (YouTube style) — Project 4: Dastarkhan ---- */
+/* When the video thumbnail scrolls into view (55% visible), wait ~900ms   */
+/* so the recruiter sees the thumbnail, then auto-fire the same swap that   */
+/* a click would trigger — identical to YouTube's in-feed autoplay trick.   */
+(function initAutoPlay() {
+  const thumb = document.getElementById('video-dastarkhan');
+  if (!thumb) return;
+
+  /* Pulse the play button when 25% visible (tease, not yet playing) */
+  const teaseObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const btn = thumb.querySelector('.video-thumb-play');
+      if (btn) btn.classList.toggle('pulse', entry.isIntersecting);
+    });
+  }, { threshold: 0.25 });
+  teaseObs.observe(thumb);
+
+  /* Auto-activate when 55% visible */
+  let fired = false;
+  const playObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting || fired) return;
+      fired = true;
+      playObs.disconnect();
+      teaseObs.disconnect();
+      setTimeout(() => {
+        /* Re-fetch by ID in case user already clicked it */
+        const el = document.getElementById('video-dastarkhan');
+        if (el && el.classList.contains('video-thumb')) {
+          activateVideoThumb(el);
+        }
+      }, 900);
+    });
+  }, { threshold: 0.55 });
+  playObs.observe(thumb);
+})();
+
 /* ---- HIRE-ME FLOATING WIDGET ---- */
 const hireWidget = document.getElementById('hireWidget');
 const hireToggle = document.getElementById('hireWidgetToggle');

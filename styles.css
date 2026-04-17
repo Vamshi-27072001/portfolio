@@ -376,6 +376,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .video-thumb-play i{font-size:2rem;color:#111;margin-left:4px;line-height:1}
 .video-thumb:hover .video-thumb-play{transform:scale(1.08);background:#fff}
 .video-thumb--soon .video-thumb-play{display:none}
+/* pulse tease — fires when thumb scrolls 25% into view */
+@keyframes play-pulse{0%,100%{transform:scale(1);box-shadow:0 6px 22px rgba(0,0,0,.35),0 0 0 0 rgba(255,255,255,.5)}60%{transform:scale(1.14);box-shadow:0 6px 22px rgba(0,0,0,.35),0 0 0 18px rgba(255,255,255,0)}}
+.video-thumb-play.pulse{animation:play-pulse 1.2s ease-in-out 3}
 
 /* Iframe wrapper (used after click-to-play swap) */
 .video-embed{position:relative;width:100%;aspect-ratio:16/9;border-radius:var(--r-md);overflow:hidden;background:#000;border:1px solid var(--border);box-shadow:0 4px 20px rgba(15,23,42,.08);margin-top:8px}
